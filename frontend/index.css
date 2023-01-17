@@ -6,6 +6,6 @@ body {
 
 #container {
     /* border: 1px solid red; */
-    height: 100vh;
+    /* height: 100vh; */
     overflow-x: hidden;
 }
