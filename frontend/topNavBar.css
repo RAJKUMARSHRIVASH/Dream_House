@@ -135,10 +135,12 @@
     display: flex;
     /* border: 1px solid; */
     width: 100%;
-    visibility:hidden;
+    /* visibility:hidden; */
     align-items: center;
     justify-content: center;
     margin-top: 10px; ;
+    background-color: white;
+    position: absolute;
 }
 
 #top-nav-bar-bottom-box-hover-body>.top-nav-bar-bottom-box-hover-body-card1 {
