@@ -17,6 +17,7 @@ for (const div of arr) {
             }
             
         </style>
+        
         <div class="top-nav-bar-bottom-box-hover-body-card1">
             <p><u>Shop All Furniture</u></p>
             <p>Quick ship and in stock Furniture ></p>
@@ -100,6 +101,11 @@ for (const div of arr) {
         `
     })
 }
+
+let raj = document.querySelector("#top-nav-bar-bottom-box-hover-body");
+raj.addEventListener("mouseover",()=>{
+    raj.style.visibility = "visible";
+})
 
 // back to top button functionality
 

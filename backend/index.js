@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const {connection} = require("./config/db");
+const {userRouter} = require("./routes/user.route");
 const dotenv = require("dotenv");
 dotenv.config();
 const cors = require("cors");
@@ -9,6 +10,7 @@ const cors = require("cors");
 const app = express();
 app.use(cors());            // to connect the things from different origins
 app.use(express.json());
+app.use("/users",userRouter);
 
 
 
