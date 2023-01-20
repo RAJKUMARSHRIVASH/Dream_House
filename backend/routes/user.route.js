@@ -54,15 +54,15 @@ userRouter.post("/login", async (req, res) => {
                     res.json({"msg" : "Login successfull", "token" : token});
                 }
                 else {
-                    res.json("Wrong password");
+                    res.json({"msg":"Wrong password"});
                 }
             })
         }
         else {
-            res.json("Wrong email or Your account doesn't exist Please register first")
+            res.json({"msg":"Wrong email or Your account doesn't exist Please register first"})
         }
     } catch (error) {
-        res.json({ "err": error });
+        res.json({ "msg": error });
         console.log("Something went wrong");
     }
 })
