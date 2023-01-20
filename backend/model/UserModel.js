@@ -6,7 +6,11 @@ const userSchema = mongoose.Schema({
     age : Number,
     email : {type : String, required : true},
     phone : Number,
-    pass : {type : String, required : true}
+    pass : {type : String, required : true},
+    address : String,
+    country : String,
+    state : String,
+    pincode : Number
 })
 
 const UserModel = mongoose.model("user",userSchema);

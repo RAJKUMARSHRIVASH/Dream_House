@@ -51,18 +51,18 @@ userRouter.post("/login", async (req, res) => {
                   /*--------------------------------------------------------------------------------------------------------------------------------- */  
                     
                     const token = jwt.sign({userID : isPresent._id, name : isPresent.name},'raj',{expiresIn : '1h'});     // creating token for verification 
-                    res.json({"msg" : "Login successfull", "token" : token});
+                    res.json({"msg" : "Login successfull", "token" : token,"name":isPresent.name});
                 }
                 else {
-                    res.json("Wrong password");
+                    res.json({"msg":"Wrong password"});
                 }
             })
         }
         else {
-            res.json("Wrong email or Your account doesn't exist Please register first")
+            res.json({"msg":"Wrong email or Your account doesn't exist Please register first"})
         }
     } catch (error) {
-        res.json({ "err": error });
+        res.json({ "msg": error });
         console.log("Something went wrong");
     }
 })

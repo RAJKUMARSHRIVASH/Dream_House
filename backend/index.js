@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const {connection} = require("./config/db");
 const {userRouter} = require("./routes/user.route");
+const {productRouter} = require("./routes/productRoute");
 const dotenv = require("dotenv");
 dotenv.config();
 const cors = require("cors");
@@ -11,6 +12,7 @@ const app = express();
 app.use(cors());            // to connect the things from different origins
 app.use(express.json());
 app.use("/users",userRouter);
+app.use("/products",productRouter);     // it is common products visible to all no authentication requied for this
 
 
 
