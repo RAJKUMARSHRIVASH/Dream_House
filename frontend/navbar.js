@@ -1,3 +1,22 @@
+//-------------------- redirect to home page if logo is clicked-------------------
+
+document.querySelector("#logo").addEventListener("click",()=>{
+    window.location.href = "index.html";
+})
+
+//-------------------- redirect to login page if contact logo is clicked-------------------
+
+document.querySelector("#login_popup").addEventListener("click",()=>{
+    window.location.href = "login.html"
+})
+
+//-------------------- redirect to cart page if cart logo is clicked-------------------
+
+document.querySelector("#cart").addEventListener("click",()=>{
+    window.location.href = "cart.html"
+})
+
+//----------------------------------------------------------------------------------
 
 // hover effect on top-nav-bar-bottom-box-> div->text
 

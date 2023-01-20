@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login page</title>
     <style>
-
         body {
             font-family: 'Sora', sans-serif;
             margin: 0;
@@ -158,6 +157,8 @@
                 <p> Dream House & Kids</p>
                 <p>Hindustaan | Bhilai</p>
                 <img src="./logo/Flag_of_India.svg.png" alt="Indian Flag">
+                <button id="admin">Admin</button>
+
             </div>
 
             <div id="top-nav-bar-middle-box">
@@ -166,14 +167,14 @@
                         <input type="text" placeholder="What can we help you find?">
                     </div>
                     <div>
-                        <img src="./logo/Dream House.png" alt="logo">
+                        <img src="./logo/Dream House.png" alt="logo" id="logo">
                     </div>
                     <div>
-                        <p>Orders & Sign in</p>
-                        <img src="./logo/add-contact.png" alt="contact">
+                        <p id="display">Orders & Sign in</p>
+                        <img src="./logo/add-contact.png" alt="contact" id="login_popup">
                         <img src="./logo/location.png" alt="location">
-                        <img src="./logo/heart.png" alt="heart or like">
-                        <img src="./logo/shopping-cart.png" alt="cart">
+                        <img src="./logo/heart.png" alt="wishlist">
+                        <img src="./logo/shopping-cart.png" alt="cart" id="cart">
                     </div>
                 </div>
                 <div id="top-nav-bar-middle-box-2">
@@ -336,7 +337,7 @@
 
 </html>
 <script src="./navbar.js"></script>
-
+<script src="./identification.js"></script>
 <script>
 
     //*************************************************************************
@@ -374,9 +375,9 @@
     //     }
     // });
 
-    let accountData = JSON.parse(localStorage.getItem("personData"));
+    // let accountData = JSON.parse(localStorage.getItem("personData"));
 
-    document.querySelector("form").addEventListener("submit", async(e) => {
+    document.querySelector("form").addEventListener("submit", async (e) => {
         e.preventDefault();
         let email = document.querySelector("#email").value;
         let pass = document.querySelector("#password").value;
@@ -386,27 +387,27 @@
             pass
         }
 
-        await fetch("http://localhost:8080/users/login",{
-            method : "POST",
-            headers : {
-                "Content-type":"application/json"
+        await fetch("http://localhost:8080/users/login", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
             },
-            body : JSON.stringify(payload)
+            body: JSON.stringify(payload)
         })
-        .then(response=>{
-            return response.json()
-        })
-        .then(message=>{
-            localStorage.setItem("token", message.token);
-            alert(message.msg)
-        })
-        .catch(err=>{
-            alert(err.msg)
-        })
+            .then(response => {
+                return response.json()
+            })
+            .then(message => {
+                localStorage.setItem("userdata", JSON.stringify({ "token": message.token, "name": message.name }));
+                alert(message.msg);
+                if (message.msg == "Login successfull") {
+                    history.back()      // to go back into the page from where I have been com from
+                }
+            })
+            .catch(err => {
+                alert(err)
+            })
     });
-
-
-
 
     //*****************************************************************************
 

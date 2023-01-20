@@ -27,6 +27,12 @@
     /* flag */
 }
 
+#admin{
+    border: 0;
+    background-color: rgb(255, 61, 142);
+    border-radius: 5px;
+}
+
 #top-nav-bar-middle-box {
     width: 100%;
     /* height: 120px; */

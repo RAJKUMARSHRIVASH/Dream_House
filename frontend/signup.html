@@ -30,7 +30,7 @@
 
         #login-card {
             /* border: 1px solid; */
-            margin-top: 25px;
+            margin-top: 3%;
             width: 30%;
             margin-left: 18vh;
             display: flex;
@@ -157,7 +157,7 @@
             cursor: pointer;
         }
 
-        #poster{
+        #poster {
             border: 1px solid;
             width: 70%;
             margin: 4%;
@@ -165,13 +165,20 @@
             background: #020f70;
 
         }
+
         #poster img {
             position: absolute;
             width: 30%;
             border-radius: 20px;
-            left : 55%;
-            top : 48%;
+            left: 55%;
+            top: 48%;
         }
+
+        #clickhere {
+            color: #020f70;
+            font-weight: bold;
+        }
+
     </style>
     <link rel="stylesheet" href="./topNavBar.css">
     <link rel="stylesheet" href="./footer.css">
@@ -186,6 +193,8 @@
                 <p> Dream House & Kids</p>
                 <p>Hindustaan | Bhilai</p>
                 <img src="./logo/Flag_of_India.svg.png" alt="Indian Flag">
+                <button id="admin">Admin</button>
+
             </div>
 
             <div id="top-nav-bar-middle-box">
@@ -194,14 +203,14 @@
                         <input type="text" placeholder="What can we help you find?">
                     </div>
                     <div>
-                        <img src="./logo/Dream House.png" alt="logo">
+                        <img src="./logo/Dream House.png" alt="logo" id="logo">
                     </div>
                     <div>
-                        <p>Orders & Sign in</p>
-                        <img src="./logo/add-contact.png" alt="contact">
+                        <p id="display">Orders & Sign in</p>
+                        <img src="./logo/add-contact.png" alt="contact" id="login_popup">
                         <img src="./logo/location.png" alt="location">
-                        <img src="./logo/heart.png" alt="heart or like">
-                        <img src="./logo/shopping-cart.png" alt="cart">
+                        <img src="./logo/heart.png" alt="wishlist">
+                        <img src="./logo/shopping-cart.png" alt="cart" id="cart">
                     </div>
                 </div>
                 <div id="top-nav-bar-middle-box-2">
@@ -268,11 +277,14 @@
                 <label for="pincode">Pincode</label>
 
 
-                <span class="checkbox"><input type="checkbox" required> I WISH TO RECEIVE DREAM HOUSE NEWS ON MY E-MAIL</span>
+                <span class="checkbox"><input type="checkbox" required> I WISH TO RECEIVE DREAM HOUSE NEWS ON MY
+                    E-MAIL</span>
 
                 <span class="checkbox"><input type="checkbox" required> I ACCEPT THE PRIVACY STATEMENT</span>
 
                 <input type="submit" name="CREATE ACCOUNT" id="login-submit-button" value="CREATE ACCOUNT">
+                <p> Already have an account please <span id="clickhere"><a href="./login.html" style="text-decoration: none;color: inherit;">Click
+                            Here</a></span></p>
             </form>
             <div id="poster">
                 <!-- <img src="./logo/vecteezy_two-young-couples-having-a-romantic-chat-on-cell-phones-3d_11124956_258.png" alt=""> -->
@@ -389,6 +401,8 @@
 
 </html>
 <script src="./navbar.js"></script>
+<script src="./identification.js"></script>
+
 <script>
 
     //******************************************************************************
@@ -473,68 +487,68 @@
 //---------------------------------------------------------------------------------
 
 */
-document.querySelector("form").addEventListener("submit", (e)=>{
-    e.preventDefault();   // preventing the page to be refreshed while submitting the FORM
-    store()
-});
+    document.querySelector("form").addEventListener("submit", (e) => {
+        e.preventDefault();   // preventing the page to be refreshed while submitting the FORM
+        store()
+    });
 
 
-const store = async(e)=> {
+    const store = async (e) => {
 
-    let name = document.querySelector("#name").value;
-    let email = document.querySelector("#email").value;
-    let age = document.querySelector("#age").value;
-    let phone = document.querySelector("#phone").value;
-    let pass = document.querySelector("#password").value;
-    let address = document.querySelector("#Address").value;
-    let country = document.querySelector("#country").value;
-    let state = document.querySelector("#state").value;
-    let pincode = document.querySelector("#pincode").value;
+        let name = document.querySelector("#name").value;
+        let email = document.querySelector("#email").value;
+        let age = document.querySelector("#age").value;
+        let phone = document.querySelector("#phone").value;
+        let pass = document.querySelector("#password").value;
+        let address = document.querySelector("#Address").value;
+        let country = document.querySelector("#country").value;
+        let state = document.querySelector("#state").value;
+        let pincode = document.querySelector("#pincode").value;
 
-    // storing these values in a object
-    let personOBJ = { // want to keep the key name and value name same then
-        email,
-        pass,
-        name,
-        address,
-        country,
-        state,
-        pincode
-    };
+        // storing these values in a object
+        let personOBJ = { // want to keep the key name and value name same then
+            email,
+            pass,
+            name,
+            address,
+            country,
+            state,
+            pincode
+        };
+
+        await fetch("http://localhost:8080/users/register", {
+            method: "POST",
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify(personOBJ)
+        })
+            .then(result => {
+                if (result.ok) {
+                    window.location.href = "login.html"
+                }
+                return result.json()
+            }).then(data => {
+                alert(data)
+            })
+            .catch(err => {
+                alert(err);
+            })
+    }
+
+
+    /*
     
-    await fetch("http://localhost:8080/users/register",{
-        method : "POST",
-        headers : {
-            "Content-type" : "application/json"
-        },
-        body : JSON.stringify(personOBJ)
-    })
-    .then(result=>{
-        if(result.ok){
-            window.location.href = "login.html"
-        }
-        return result.json()
-    }).then(data=>{
-        alert(data)
-    })
-    .catch(err=>{
-        alert(err);
-    })
-}
-
-
-/*
-
-  "name" : "Raj",
-  "age" : 24,
-  "email" : "r@gmail.com",
-  "phone" : 121254154,
-  "pass" : "12345",
-  "address" : "jhdsfsdfb",
-  "state" : "chhattisgarh",
-  "pincode": "454255",
-  "country": "india"
-
-*/
+      "name" : "Raj",
+      "age" : 24,
+      "email" : "r@gmail.com",
+      "phone" : 121254154,
+      "pass" : "12345",
+      "address" : "jhdsfsdfb",
+      "state" : "chhattisgarh",
+      "pincode": "454255",
+      "country": "india"
+    
+    */
 
 </script>
