@@ -223,7 +223,7 @@
                     FORM.</p>
                 <p>BY GIVING US YOUR DETAILS, PURCHASING IN <b>dreamhouse.com</b> WILL BE FASTER AND AN ENJOYABLE
                     EXPERIENCE.</p>
-                <button><a href="accountCreationPage.html" style="text-decoration: none; color: unset;">CREATE
+                <button><a href="signup.html" style="text-decoration: none; color: unset;">CREATE
                         ACCOUNT</a></button>
             </div>
 
@@ -335,7 +335,7 @@
 </body>
 
 </html>
-<script src="./index.js"></script>
+<script src="./navbar.js"></script>
 
 <script>
 
@@ -353,26 +353,60 @@
     }
     //*************************************************************************
 
+    // let accountData = JSON.parse(localStorage.getItem("personData"));
+
+    // document.querySelector("form").addEventListener("submit", (e) => {
+    //     e.preventDefault();
+    //     let email = document.querySelector("#email").value;
+    //     let pass = document.querySelector("#password").value;
+
+    //     let check = false;
+    //     accountData.forEach(element => {
+    //         if (element.email == email && element.password == pass) {
+    //             check = true;
+    //             return;
+    //         }
+    //     });
+    //     if (check == true) {
+    //         alert("Login Successfull");
+    //     } else {
+    //         alert("Check your id and Password or Please register first");
+    //     }
+    // });
+
     let accountData = JSON.parse(localStorage.getItem("personData"));
 
-    document.querySelector("form").addEventListener("submit", (e) => {
+    document.querySelector("form").addEventListener("submit", async(e) => {
         e.preventDefault();
         let email = document.querySelector("#email").value;
         let pass = document.querySelector("#password").value;
 
-        let check = false;
-        accountData.forEach(element => {
-            if (element.email == email && element.password == pass) {
-                check = true;
-                return;
-            }
-        });
-        if (check == true) {
-            alert("Login Successfull");
-        } else {
-            alert("Check your id and Password or Please register first");
+        const payload = {
+            email,
+            pass
         }
+
+        await fetch("http://localhost:8080/users/login",{
+            method : "POST",
+            headers : {
+                "Content-type":"application/json"
+            },
+            body : JSON.stringify(payload)
+        })
+        .then(response=>{
+            return response.json()
+        })
+        .then(message=>{
+            localStorage.setItem("token", message.token);
+            alert(message.msg)
+        })
+        .catch(err=>{
+            alert(err.msg)
+        })
     });
+
+
+
 
     //*****************************************************************************
 
