@@ -51,7 +51,7 @@ userRouter.post("/login", async (req, res) => {
                   /*--------------------------------------------------------------------------------------------------------------------------------- */  
                     
                     const token = jwt.sign({userID : isPresent._id, name : isPresent.name},'raj',{expiresIn : '1h'});     // creating token for verification 
-                    res.json({"msg" : "Login successfull", "token" : token});
+                    res.json({"msg" : "Login successfull", "token" : token,"name":isPresent.name});
                 }
                 else {
                     res.json({"msg":"Wrong password"});
