@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product</title>
+    <title>Admin Login Signup</title>
     <link rel="icon" href="./logo/Copy of dream HOuse.ico" type="imgae/x-icon">
     <style>
         body {
@@ -14,11 +14,96 @@
             padding: 0;
             /* overflow-y: hidden; */
             overflow-x: hidden;
+            width: 100%;
         }
 
         .main-container {
             /* border: 1px solid green; */
             height: 100vh;
+        }
+        #left img {
+           width: 30%;
+           position: absolute;
+           top: 20%;
+           left: 5%;
+        }
+        #right img {
+           width: 28%;
+           position: absolute;
+           top: 35%;
+           right: 5%;
+        }
+
+        #body-container {
+            margin: 20px;
+            height: 80vh;
+            text-align: center;
+            background-color:aliceblue;
+        }
+        
+
+        #body-container>button {
+            border: 0;
+            background-color: bisque;
+            padding: 5px 15px;
+            margin: 5px;
+            border-radius: 5px;
+            color: rgb(249, 61, 133);
+            font-weight: bold;
+
+        }
+
+        #body-container>button:hover {
+            background-color: rgb(251, 201, 139);
+        }
+
+        #card {
+            border: 1px solid silver;
+            margin: auto;
+            width: 20%;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            margin-top: 20px;
+            border-radius: 10px;
+            text-align: end;
+            margin-top: 10px;
+            padding-top: 10px;
+            display: none;
+        }
+
+        input {
+            margin: 10px;
+            padding: 5px;
+        }
+
+        input:focus {
+            outline: 1px solid silver;
+        }
+
+        label {
+            color: rgb(52, 52, 253);
+        }
+
+        #register {
+            border: 0;
+            background-color: rgb(253, 68, 185);
+            padding: 5px 15px;
+            border-radius: 5px;
+            color: aliceblue;
+        }
+
+        #register:hover {
+            background-color: rgb(255, 108, 201);
+
+        }
+        #login{
+            border: 0;
+            background-color: rgb(253, 68, 185);
+            padding: 5px 15px;
+            border-radius: 5px;
+            color: aliceblue;
+        }
+        #login:hover{
+            background-color: rgb(255, 108, 201);
         }
     </style>
     <link rel="stylesheet" href="./topNavBar.css">
@@ -83,9 +168,19 @@
             <div id="top-nav-bar-bottom-box-hover-body"></div>
 
         </section>
-        <section>
-            <div id="products"></div>
-        </section>
+        <div id="left">
+            <img src="./logo/Saly-10.png" alt="">
+        </div>
+        <div id="right">
+            <img src="./logo/vecteezy_two-young-couples-having-a-romantic-chat-on-cell-phones-3d_11124956_258.png" alt="">
+        </div>
+        <div id="body-container">
+            
+            <button id="login">Login</button>
+            <button id="signup">Signup</button>
+            <div id="card"></div>
+        </div>
+
         <section id="bottom-footer">
             <div>
                 <div>
@@ -190,13 +285,69 @@
         </section>
 
     </div>
-
 </body>
 
 </html>
-<script src="./identification.js"></script>
 <script src="./navbar.js"></script>
 <script>
+
     let baseURL = "http://localhost:8080";
+
+    let count = 0;
+    document.querySelector("#login").addEventListener("click", () => {
+        if (count == 0) {
+            count = 1;
+            document.querySelector("#card").style.display = "block";
+        } else {
+            count = 0;
+            document.querySelector("#card").style.display = "none";
+        }
+        document.querySelector("#card").innerHTML = `
+
+            <form id="signupbox" method="post">
+
+                <label for="email">Email</label>
+                <input type="email" placeholder="Enter Email" id="email">
+                <br>
+                <label for="password" id="lableForPass">Password</label>
+                <input type="password" placeholder="Enter password" id="password">
+                <br>
+                <input type="submit" value="Login" id="login">
+
+            </form>
+        `
+
+    })
+
+    let check = 0;
+    document.querySelector("#signup").addEventListener("click", () => {
+        if (check == 0) {
+            check = 1;
+            document.querySelector("#card").style.display = "block";
+        } else {
+            check = 0;
+            document.querySelector("#card").style.display = "none";
+        }
+        document.querySelector("#card").innerHTML = `
+
+            <form id="signupbox" method="post">
+                
+                <label for="name">Name</label>
+                <input type="text" placeholder="Enter name" id="name">
+                <br>
+                <label for="email">Email</label>
+                <input type="email" placeholder="Enter Email" id="email">
+                <br>
+                <label for="password" id="lableForPass">Password</label>
+                <input type="password" placeholder="Enter password" id="password">
+                <br>
+                <input type="submit" value="Register" id="register">
+
+            </form>
+        `
+
+    })
+
+    
 
 </script>

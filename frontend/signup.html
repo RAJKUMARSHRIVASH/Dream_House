@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account</title>
+    <link rel="icon" href="./logo/Copy of dream HOuse.ico" type="imgae/x-icon">
     <style>
         body {
             font-family: 'Sora', sans-serif;
@@ -178,10 +179,10 @@
             color: #020f70;
             font-weight: bold;
         }
-
     </style>
     <link rel="stylesheet" href="./topNavBar.css">
     <link rel="stylesheet" href="./footer.css">
+
 </head>
 
 <body>
@@ -283,7 +284,8 @@
                 <span class="checkbox"><input type="checkbox" required> I ACCEPT THE PRIVACY STATEMENT</span>
 
                 <input type="submit" name="CREATE ACCOUNT" id="login-submit-button" value="CREATE ACCOUNT">
-                <p> Already have an account please <span id="clickhere"><a href="./login.html" style="text-decoration: none;color: inherit;">Click
+                <p> Already have an account please <span id="clickhere"><a href="./login.html"
+                            style="text-decoration: none;color: inherit;">Click
                             Here</a></span></p>
             </form>
             <div id="poster">
@@ -487,6 +489,10 @@
 //---------------------------------------------------------------------------------
 
 */
+
+
+    let baseURL = "http://localhost:8080";
+
     document.querySelector("form").addEventListener("submit", (e) => {
         e.preventDefault();   // preventing the page to be refreshed while submitting the FORM
         store()
@@ -516,7 +522,7 @@
             pincode
         };
 
-        await fetch("http://localhost:8080/users/register", {
+        await fetch(`${baseURL}/users/register`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
