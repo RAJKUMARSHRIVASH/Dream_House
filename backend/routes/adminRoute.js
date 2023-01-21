@@ -33,8 +33,6 @@ adminRouter.post("/register", async (req, res) => {
     }
 })
 
-
-
 adminRouter.post("/login", async (req, res) => {
     const {email,pass} = req.body;
     try {
@@ -43,15 +41,7 @@ adminRouter.post("/login", async (req, res) => {
             const hashedPassword = isPresent.pass;
             bcrypt.compare(pass,hashedPassword,(err,result)=>{
                 if(result) {
-
-                  /*--------------------------------------------------------------------------------------------------------------------------------- */  
-                    // const token = jwt.sign({makingNote : 'backend'},'raj',{expiresIn : '1h'});     // creating token for verification 
-
-                    // here the {makingNote : 'backend'} is a random string so intead of passing this we can pass our userID so that it can be used while
-                    // doing anything with the node basically we are developing the Relationship between the usercollection and notesCollection so that we have
-                    // if we have to work with any note we could be able to verify the user is valid or not 
-                  /*--------------------------------------------------------------------------------------------------------------------------------- */  
-                    
+                                        
                     const token = jwt.sign({userID : isPresent._id, name : isPresent.name},'Admin',{expiresIn : '1h'});     // creating token for verification 
                     res.json({"msg" : "Login successfull", "token" : token,"name":isPresent.name});
                 }

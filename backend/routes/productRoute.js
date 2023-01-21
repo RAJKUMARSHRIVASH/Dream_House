@@ -2,6 +2,7 @@ const express = require("express")
 const mongoose = require("mongoose")
 const productRouter = express.Router();
 const { ProductModel } = require("../model/ProductModel");
+const {adminAuthenticate} = require("../middleware/adminAuthentication");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
@@ -24,8 +25,10 @@ productRouter.get("/", async (req, res) => {
 
 // adminAuthentication middleware here this will be allowd only who have admin id
 
+productRouter.use(adminAuthenticate);
+
 productRouter.post("/create", (req, res) => {
-    
+
 })
 
 productRouter.patch("/update/:id", (req, res) => {
