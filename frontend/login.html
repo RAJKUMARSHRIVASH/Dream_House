@@ -379,6 +379,10 @@
 
     // let accountData = JSON.parse(localStorage.getItem("personData"));
 
+    //-----------------------------------------------------------------------------------------------
+
+    let baseURL = "http://localhost:8080";
+
     document.querySelector("form").addEventListener("submit", async (e) => {
         e.preventDefault();
         let email = document.querySelector("#email").value;
@@ -389,7 +393,7 @@
             pass
         }
 
-        await fetch("http://localhost:8080/users/login", {
+        await fetch(`${baseURL}/users/login`, {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
