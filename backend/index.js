@@ -15,7 +15,7 @@ app.use(express.json());
 app.use("/users",userRouter);
 app.use("/products",productRouter);     // it is common products visible to all no authentication requied for this
 app.use("/admins",adminRouter);         // but if we need to perform post patch delete request on products then in that file we have used 
-                                        // a middle ware that is adminAuthenticate from that it will be ensured that user is a admin or not
+                                        // a middle ware that is adminAuthenticate from that it can be ensured that user is a admin or not
 
 
 
