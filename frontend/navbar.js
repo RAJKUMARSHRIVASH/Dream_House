@@ -18,6 +18,10 @@ document.querySelector("#cart").addEventListener("click",()=>{
 
 //----------------------------------------------------------------------------------
 
+document.querySelector("#admin").addEventListener("click",()=>{
+    window.location.href = "adminLoginSignup.html"
+})
+
 // hover effect on top-nav-bar-bottom-box-> div->text
 
 let arr = document.querySelectorAll(".top-nav-bar-bottom-box-text");
