@@ -5,16 +5,16 @@
 // back to top button functionality
 
 let btn = document.querySelector("#backToTop");
-window.addEventListener("scroll",()=>{
-    
-    if(window.scrollY>200) {
+window.addEventListener("scroll", () => {
+
+    if (window.scrollY > 200) {
         btn.classList.add("active");
-    }else {
+    } else {
         btn.classList.remove("active");
     }
-})    
+})
 
-const backToTop = ()=>{
+const backToTop = () => {
     document.body.scrollTop = 0;  // For Safari
     document.documentElement.scrollTop = 0;  // For Chrome, Firefox, IE and Opera
     //  ( documentElement  or  scrollingElement )
@@ -24,8 +24,7 @@ const backToTop = ()=>{
 
 let imgs = document.querySelectorAll("#middle-body img");
 for (const img of imgs) {
-    img.addEventListener("click",()=>{
-        console.log('sadjsdn');
+    img.addEventListener("click", () => {
         window.location.href = "products.html";
     })
 }
