@@ -41,6 +41,7 @@ productRouter.post("/create", async(req, res) => {
     }
 })
 
+
 productRouter.patch("/update/:id", (req, res) => {
     const id = req.params.id;
     
