@@ -21,26 +21,28 @@
             /* border: 1px solid green; */
             height: 100vh;
         }
+
         #left img {
-           width: 30%;
-           position: absolute;
-           top: 20%;
-           left: 5%;
+            width: 30%;
+            position: absolute;
+            top: 20%;
+            left: 5%;
         }
+
         #right img {
-           width: 28%;
-           position: absolute;
-           top: 35%;
-           right: 5%;
+            width: 28%;
+            position: absolute;
+            top: 35%;
+            right: 5%;
         }
 
         #body-container {
             margin: 20px;
             height: 80vh;
             text-align: center;
-            background-color:aliceblue;
+            background-color: aliceblue;
         }
-        
+
 
         #body-container>button {
             border: 0;
@@ -60,7 +62,7 @@
         #card {
             border: 1px solid silver;
             margin: auto;
-            width: 20%;
+            width: 22%;
             box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             margin-top: 20px;
             border-radius: 10px;
@@ -95,14 +97,16 @@
             background-color: rgb(255, 108, 201);
 
         }
-        #login{
+
+        #login {
             border: 0;
             background-color: rgb(253, 68, 185);
             padding: 5px 15px;
             border-radius: 5px;
             color: aliceblue;
         }
-        #login:hover{
+
+        #login:hover {
             background-color: rgb(255, 108, 201);
         }
     </style>
@@ -172,10 +176,11 @@
             <img src="./logo/Saly-10.png" alt="">
         </div>
         <div id="right">
-            <img src="./logo/vecteezy_two-young-couples-having-a-romantic-chat-on-cell-phones-3d_11124956_258.png" alt="">
+            <img src="./logo/vecteezy_two-young-couples-having-a-romantic-chat-on-cell-phones-3d_11124956_258.png"
+                alt="">
         </div>
         <div id="body-container">
-            
+
             <button id="login">Login</button>
             <button id="signup">Signup</button>
             <div id="card"></div>
@@ -256,15 +261,10 @@
                     <div>
                         <p style="font-weight: bold;">Social Media</p>
                         <div id="social-media">
-                            <img id="fb" src="http://assets.stickpng.com/thumbs/584ac2d03ac3a570f94a666d.png"
-                                alt="FACEBOOK">
-                            <img id="insta" src="https://assets.stickpng.com/thumbs/580b57fcd9996e24bc43c521.png"
-                                alt="INSTA">
-                            <img id="pinterest"
-                                src="https://i.pinimg.com/originals/53/93/8b/53938be3049a393cb8fc395d173eb0b9.jpg"
-                                alt="Pinterest">
-                            <img id="youtube" src="https://assets.stickpng.com/thumbs/58e9197deb97430e819064f8.png"
-                                alt="YouTube">
+                            <img id="fb" src="./logo/fb.png" alt="FACEBOOK">
+                            <img id="insta" src="./logo/insta.png" alt="INSTA">
+                            <img id="pinterest" src="./logo/pinterestlogo.jpg" alt="Pinterest">
+                            <img id="youtube" src="./logo/ytlogo.png" alt="YouTube">
                         </div>
 
                     </div>
@@ -316,7 +316,30 @@
 
             </form>
         `
+        document.querySelector("form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const email = document.querySelector("#email").value;
+            const pass = document.querySelector("#password").value;
 
+            const payload = {
+                email,
+                pass
+            }
+
+            let fetchdata = await fetch(`${baseURL}/admins/login`, {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                },
+                body: JSON.stringify(payload)
+            })
+            let data = await fetchdata.json();
+            localStorage.setItem("admin", JSON.stringify({ "token": data.token, "name": data.name }));
+            alert(data.msg);
+            if(data.msg == "Login successfull"){
+                history.back()      // to go back into the page from where I have been com from
+            }
+        })
     })
 
     let check = 0;
@@ -333,21 +356,45 @@
             <form id="signupbox" method="post">
                 
                 <label for="name">Name</label>
-                <input type="text" placeholder="Enter name" id="name">
+                <input type="text" placeholder="Enter name" id="name" required>
                 <br>
                 <label for="email">Email</label>
-                <input type="email" placeholder="Enter Email" id="email">
+                <input type="email" placeholder="Enter Email" id="email" required>
                 <br>
                 <label for="password" id="lableForPass">Password</label>
-                <input type="password" placeholder="Enter password" id="password">
+                <input type="password" placeholder="Enter password" id="password" required>
+                <br>
+                <label for="key" id="keylable">Company Key</label>
+                <input type="password" placeholder="Enter key" id="key" required>
                 <br>
                 <input type="submit" value="Register" id="register">
 
             </form>
         `
 
-    })
+        document.querySelector("form").addEventListener("submit", async (e) => {
+            e.preventDefault();
+            const name = document.querySelector("#name").value;
+            const email = document.querySelector("#email").value;
+            const pass = document.querySelector("#password").value;
+            const key = document.querySelector("#key").value;
 
-    
+            const payload = {
+                name,
+                email,
+                pass
+            }
+            let fetchdata = await fetch(`${baseURL}/admins/register`, {
+                method: "POST",
+                headers: {
+                    "Content-type": "application/json",
+                    "CompanyKey": `${key}`
+                },
+                body: JSON.stringify(payload)
+            })
+            let data = await fetchdata.json();
+            alert(data)
+        })
+    })
 
 </script>
