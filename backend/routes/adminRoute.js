@@ -38,7 +38,6 @@ const key = "raj";      // company key
     }else {
         res.json("Wrong key! Please Provide right key to become an Admin");
     }
-
 })
 
 adminRouter.post("/login", async (req, res) => {

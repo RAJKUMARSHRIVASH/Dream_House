@@ -27,8 +27,18 @@ productRouter.get("/", async (req, res) => {
 
 productRouter.use(adminAuthenticate);
 
-productRouter.post("/create", (req, res) => {
+productRouter.post("/create", async(req, res) => {
+    // const {title,image,category,price,description} = req.body;
+    const payload = req.body;
 
+    try {
+        const product = new ProductModel(payload);
+        await product.save();
+        res.json({"msg":"Product has been added."})
+    } catch (error) {
+        res.json({ "msg": error+" Not able to add the product"});
+        console.log("Not able to add the product");
+    }
 })
 
 productRouter.patch("/update/:id", (req, res) => {
