@@ -21,3 +21,11 @@ const backToTop = ()=>{
 }
 
 //------------------------------------------------------------------------------------
+
+let imgs = document.querySelectorAll("#middle-body img");
+for (const img of imgs) {
+    img.addEventListener("click",()=>{
+        console.log('sadjsdn');
+        window.location.href = "products.html";
+    })
+}
