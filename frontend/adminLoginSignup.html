@@ -289,6 +289,7 @@
 
 </html>
 <script src="./navbar.js"></script>
+<script src="./adminIdentification.js"></script>
 <script>
 
     let baseURL = "http://localhost:8080";
@@ -318,6 +319,7 @@
         `
         document.querySelector("form").addEventListener("submit", async (e) => {
             e.preventDefault();
+            localStorage.removeItem("userdata");
             const email = document.querySelector("#email").value;
             const pass = document.querySelector("#password").value;
 
@@ -337,7 +339,7 @@
             localStorage.setItem("admin", JSON.stringify({ "token": data.token, "name": data.name }));
             alert(data.msg);
             if(data.msg == "Login successfull"){
-                history.back()      // to go back into the page from where I have been com from
+                window.location.href = "adminProducts.html"
             }
         })
     })
