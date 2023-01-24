@@ -10,7 +10,7 @@ dotenv.config();
 const cors = require("cors");
 
 const app = express();
-app.use(cors());            // to connect the things from different origins
+app.use(cors({'origin': '*'}));            // to connect the things from different origins
 app.use(express.json());
 app.use("/users",userRouter);
 app.use("/products",productRouter);     // it is common products visible to all no authentication requied for this

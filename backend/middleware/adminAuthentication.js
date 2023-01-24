@@ -2,18 +2,19 @@
 const jwt = require("jsonwebtoken");
 
 const adminAuthenticate = (req,res,next)=>{
-    const token = req.headers.authorization;
-    if(token) {
-        const decoded = jwt.verify(token,'Admin');
+    const auth = JSON.parse(req.headers.authorization); // coz in frontend we stored the token in stringify format and sent it back
+    // auth = JSON.parse(auth);
+    if(auth.token) {
+        const decoded = jwt.verify(auth.token,'Admin');
         if(decoded) {
             next();
         }
         else {
-            res.json("Please login first");
+            res.json({"msg":"Please login first"});
         }
     }
     else {
-        res.json("Please login first");
+        res.json({"msg":"Invalid token"});
     }
 }
 

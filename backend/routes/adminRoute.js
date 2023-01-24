@@ -9,9 +9,9 @@ require("dotenv").config();
 adminRouter.use(express.json());
 
 adminRouter.post("/register", async (req, res) => {
-const key = "raj";      // company key
+    const key = "raj";      // company key
     // console.log(req.headers.companykey === key);
-    
+
     if (req.headers.companykey === key) {
 
         const { email, pass, name } = req.body;              // destructuring the object that we are jsoning
@@ -35,7 +35,7 @@ const key = "raj";      // company key
             res.json({ "err": error });
             console.log("Something went wrong");
         }
-    }else {
+    } else {
         res.json("Wrong key! Please Provide right key to become an Admin");
     }
 })
