@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin</title>
+    <link rel="icon" href="./logo/Copy of dream HOuse.ico" type="imgae/x-icon">
     <link rel="stylesheet" href="./index.css">
     <link rel="stylesheet" href="./topNavBar.css">
     <link rel="stylesheet" href="./footer.css">
@@ -195,6 +196,12 @@
         #addnow:hover {
             background-color: rgb(250, 91, 167);
 
+        }
+
+        #middle .active {
+            filter: blur(3px);
+            /* filter:contrast(200%) */
+            /* filter:drop-shadow(10% 10% 10% red) */
         }
     </style>
 </head>
@@ -498,6 +505,7 @@
     let baseURL = "http://localhost:8080";
 
     var display = async () => {
+        document.querySelector("#products").innerHTML = "";
         try {
             const fetchdata = await fetch(`${baseURL}/products`);
             const data = await fetchdata.json();
@@ -524,12 +532,17 @@
 
                 let update = document.createElement("button");
                 update.innerText = "Update";
-                // update.style.display = "none";
+                update.addEventListener("click", () => {
+                    updateProduct(element._id, element.title, element.category, element.image, element.price, element.description);
+                });
 
                 let del = document.createElement("button");
                 del.innerText = "Delete";
-                // del.style.display = "none";
-                Buttondiv.append(update, del)
+                del.addEventListener("click", () => {
+                    deleteProduct(element._id);
+                });
+
+                Buttondiv.append(update, del);
 
                 div.append(img, title, price, description, category, Buttondiv);
 
@@ -550,16 +563,20 @@
         if (check == 0) {
             check = 1;
             document.querySelector("#addProduct").style.display = "block";
+            document.querySelector("#products").classList.add("active");
+
         } else {
             check = 0;
             document.querySelector("#addProduct").style.display = "none";
+            document.querySelector("#products").classList.remove("active");
+
         }
 
         document.querySelector("#addProduct").innerHTML = `
 
-    <form id="signupbox" method="post">
+            <form id="ProductAdding" method="post">
                 
-                <label for="name">Title</label>
+                <label for="title">Title</label>
                 <input type="text" placeholder="Enter Title of the Product" id="title" required>
                 <br>
                 <label for="image">Image</label>
@@ -569,17 +586,153 @@
                 <input type="text" placeholder="Enter price" id="price" required>
                 <br>
                 <label for="description" id="deslable">Description</label>
-                <input type="text" placeholder="Enter description (Optional)" id="key">
+                <input type="text" placeholder="Enter description (Optional)" id="description">
+                <br>
+                <label for="category" id="catlable">Category</label>
+                <input type="text" placeholder="Enter category" id="category">
                 <br>
                 <input type="submit" value="Add Product" id="addnow">
 
             </form>
     
-    `
+        `
+        document.querySelector("#ProductAdding").addEventListener("submit", async (e) => {
+            e.preventDefault();
 
-    
+            let title = document.querySelector("#title").value;
+            let image = document.querySelector("#image").value;
+            let price = document.querySelector("#price").value;
+            let description = document.querySelector("#description").value;
+            let category = document.querySelector("#category").value;
+
+            const payload = {
+                title,
+                image,
+                price,
+                description,
+                category
+            }
+            try {
+                const fetchdata = await fetch(`${baseURL}/products/create`, {
+                    method: "POST",
+                    headers: {
+                        "Content-type": "application/json",
+                        // "Authorization": JSON.parse(localStorage.getItem("admin"))  it can not be parsed here as we can send
+                        // string format only because headers passes only string even if I try to parse
+                        // so it will be parsed at backend at adminAuthentication when needed.
+
+                        "Authorization": localStorage.getItem("admin")
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const data = await fetchdata.json();
+                alert(data.msg);
+                document.querySelector("#addProduct").style.display = "none";
+                document.querySelector("#products").classList.remove("active");
+                display();
+            } catch (error) {
+                console.log(error);
+            }
+
+        })
+
     })
 
+    //----------------------------delete Product-------------------------------------------
 
+    const deleteProduct = async (id) => {
+
+        try {
+            const ftdata = await fetch(`${baseURL}/products/delete/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": localStorage.getItem("admin")
+                }
+            })
+            const data = await ftdata.json();
+            alert(data.msg);
+
+            display();
+        } catch (error) {
+            console.log(error);
+        }
+    }
+    //----------------------------update Product-------------------------------------------
+
+    let ch = 0;
+    const updateProduct = async (id, title, category, image, price, description) => {
+        if (ch == 0) {
+            ch = 1;
+            document.querySelector("#addProduct").style.display = "block";
+            document.querySelector("#products").classList.add("active");
+
+        } else {
+            ch = 0;
+            document.querySelector("#addProduct").style.display = "none";
+            document.querySelector("#products").classList.remove("active");
+
+        }
+
+        document.querySelector("#addProduct").innerHTML = `
+
+            <form id="ProductUpdate" method="patch">
+                        
+                <label for="title">Title</label>
+                <input type="text" placeholder="Enter Title of the Product" id="title" value=${title}>
+                <br>
+                <label for="image">Image</label>
+                <input type="text" placeholder="Enter image link in ['link']" id="image" value=${image}>
+                <br>
+                <label for="price" id="lable for price">Price</label>
+                <input type="text" placeholder="Enter price" id="price" value=${price}>
+                <br>
+                <label for="description" id="deslable">Description</label>
+                <input type="text" placeholder="Enter description (Optional)" id="description" value=${description}>
+                <br>
+                <label for="category" id="catlable">Category</label>
+                <input type="text" placeholder="Enter category" id="category" value=${category}>
+                <br>
+                <input type="submit" value="Add Product" id="addnow">
+
+            </form>
+
+        `
+
+        document.querySelector("#ProductUpdate").addEventListener("submit", async (e) => {
+            e.preventDefault();
+
+            let title = document.querySelector("#title").value;
+            let image = document.querySelector("#image").value;
+            let price = document.querySelector("#price").value;
+            let description = document.querySelector("#description").value;
+            let category = document.querySelector("#category").value;
+
+            const payload = {
+                title,
+                image,
+                price,
+                description,
+                category
+            }
+            try {
+                const fdata = await fetch(`${baseURL}/products/update/${id}`, {
+                    method: "PATCH",
+                    headers: {
+                        "Content-type": "application/json",
+                        "Authorization": localStorage.getItem("admin")
+                    },
+                    body: JSON.stringify(payload)
+                })
+                const data = await fdata.json();
+                alert(data.msg);
+                document.querySelector("#addProduct").style.display = "none";
+                document.querySelector("#products").classList.remove("active");
+                display();
+            } catch (error) {
+                alert(error);
+            }
+        })
+    }
 
 </script>
