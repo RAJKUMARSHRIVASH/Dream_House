@@ -115,7 +115,7 @@
 
         #products>div:hover button {
             display: block;
-            transition: all 0.5s ease-in-out;
+            
         }
 
         #products>div p {
@@ -190,7 +190,7 @@
             padding: 5px 15px;
             border-radius: 5px;
             color: aliceblue;
-            width: 35%;
+            /* width: 35%; */
         }
 
         #addnow:hover {
@@ -679,26 +679,27 @@
             <form id="ProductUpdate" method="patch">
                         
                 <label for="title">Title</label>
-                <input type="text" placeholder="Enter Title of the Product" id="title" value=${title}>
+                <input type="text" placeholder="Enter Title of the Product" id="title" value='${title}'>
                 <br>
                 <label for="image">Image</label>
-                <input type="text" placeholder="Enter image link in ['link']" id="image" value=${image}>
+                <input type="text" placeholder="Enter image link in ['link']" id="image" value='${image}'>
                 <br>
                 <label for="price" id="lable for price">Price</label>
-                <input type="text" placeholder="Enter price" id="price" value=${price}>
+                <input type="text" placeholder="Enter price" id="price" value='${price}'>
                 <br>
                 <label for="description" id="deslable">Description</label>
-                <input type="text" placeholder="Enter description (Optional)" id="description" value=${description}>
+                <input type="text" placeholder="Enter description (Optional)" id="description" value='${description}'>
                 <br>
                 <label for="category" id="catlable">Category</label>
-                <input type="text" placeholder="Enter category" id="category" value=${category}>
+                <input type="text" placeholder="Enter category" id="category" value='${category}'>
                 <br>
-                <input type="submit" value="Add Product" id="addnow">
+                <input type="submit" value="Update Product" id="addnow">
 
             </form>
 
         `
-
+        // here in the value we need to pass the description inside the single quote other wise it will capture only the first word of the whole sentance
+        // value = ''
         document.querySelector("#ProductUpdate").addEventListener("submit", async (e) => {
             e.preventDefault();
 
