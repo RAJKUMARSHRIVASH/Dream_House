@@ -183,6 +183,7 @@
 
             <button id="login">Login</button>
             <button id="signup">Signup</button>
+            <button id="Product-page-btn">Product page</button>
             <div id="card"></div>
         </div>
 
@@ -399,4 +400,12 @@
         })
     })
 
+    document.querySelector("#Product-page-btn").addEventListener("click",()=>{
+        const tokenObj = JSON.parse(localStorage.getItem("admin"));
+        if(tokenObj && tokenObj.token){
+            window.location.href = "adminProducts.html";
+        }else {
+            alert("Please login first");
+        }
+    })
 </script>
