@@ -1,7 +1,7 @@
 const express = require("express")
-const mongoose = require("mongoose")
 const userRouter = express.Router();
 const { UserModel } = require("../model/UserModel");
+// const {authenticate} = require("../middleware/normalAuthentication");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
@@ -66,6 +66,20 @@ userRouter.post("/login", async (req, res) => {
         console.log("Something went wrong");
     }
 })
+
+// userRouter.use(authenticate);
+
+// userRouter.post("/cart",async(req,res)=>{
+//     const productId = req.headers.productid;
+//     const userID = req.body.userID;
+//     console.log(userID,productId);
+//     try {
+//         const userData = await UserModel.findByIdAndUpdate({_id:userID},productId) 
+//     } catch (error) {
+//         res.json({ "msg": error });
+//         console.log("Something went wrong");
+//     }
+// })
 
 module.exports = {
     userRouter

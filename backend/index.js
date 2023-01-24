@@ -1,10 +1,10 @@
 
 const express = require("express");
-const mongoose = require("mongoose");
 const {connection} = require("./config/db");
 const {userRouter} = require("./routes/user.route");
 const {productRouter} = require("./routes/productRoute");
 const {adminRouter} = require("./routes/adminRoute");
+const {cartRouter} = require("./routes/cartRoute");
 const dotenv = require("dotenv");
 dotenv.config();
 const cors = require("cors");
@@ -16,7 +16,7 @@ app.use("/users",userRouter);
 app.use("/products",productRouter);     // it is common products visible to all no authentication requied for this
 app.use("/admins",adminRouter);         // but if we need to perform post patch delete request on products then in that file we have used 
                                         // a middle ware that is adminAuthenticate from that it can be ensured that user is a admin or not
-
+app.use("/cart",cartRouter);
 
 
 app.listen(process.env.port,async()=>{

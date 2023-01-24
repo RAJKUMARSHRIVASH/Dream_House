@@ -1,11 +1,7 @@
 const express = require("express")
-const mongoose = require("mongoose")
 const productRouter = express.Router();
 const { ProductModel } = require("../model/ProductModel");
 const { adminAuthenticate } = require("../middleware/adminAuthentication");
-const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
-require("dotenv").config();
 
 productRouter.use(express.json());
 
