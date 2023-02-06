@@ -18,6 +18,26 @@ module.exports = {
 
 /*
 
+
+
+
+
+
+{
+        "title": "Modern Sofa",
+        "images": ["sofa1.jpg", "sofa2.jpg", "sofa3.jpg"],
+        "price": "$1,000",
+        "description": "This sleek and modern sofa is the perfect addition to any living room. It features comfortable cushions and a sturdy frame.",
+        "category": "Living Room"
+    },
+    {
+        "title": "Rustic Dining Table",
+        "images": ["table1.jpg", "table2.jpg", "table3.jpg"],
+        "price": "$800",
+        "description": "This rustic dining table is made from reclaimed wood and features a unique, one-of-a-kind design.",
+        "category": "Dining Room"
+    },
+
 {
   "title" : "wells-leather-tuxedo-chair",
   "category" : "single sofa",

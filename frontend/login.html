@@ -385,6 +385,7 @@
 
     document.querySelector("form").addEventListener("submit", async (e) => {
         e.preventDefault();
+        localStorage.removeItem("admin");
         let email = document.querySelector("#email").value;
         let pass = document.querySelector("#password").value;
 
