@@ -5,9 +5,43 @@ const { UserModel } = require("../model/UserModel");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 require("dotenv").config();
+const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+
+//--------------------------------------------------------------------------------------------------------
+const clientID = "e86e8c86f0d4299ad878";    // from github for Oauth
+const clientSecret = "fb18fc3e9eae2cb1dac9c53b8135961b3a2cd2cc";    // from Github for Oauth
 
 userRouter.use(express.json());
 
+userRouter.get("/auth/github", async (req, res) => {
+    const { code } = req.query;
+    const accessToken = await fetch("https://github.com/login/oauth/access_token", {
+        method: 'POST',
+        headers: {
+            'Content-type': "application/json",
+            Accept: "application/json"
+        },
+        body: JSON.stringify({
+            client_id: clientID,
+            client_secret: clientSecret,
+            code
+        })
+    }).then(data =>{return data.json()})
+    console.log(accessToken);
+
+    const userDetails = await fetch("https://api.github.com/user", {
+        headers: {
+            Authorization :`Bearer ${accessToken.access_token}`
+        }
+    }).then(data =>{return data.json()});
+    if(userDetails){
+        res.json({Name : userDetails.name, msg : "Successfully logged in"})
+    }else{
+        res.json("Retry");
+    }
+})
+
+//------------------------------------------------------------------------------------------------------------------------
 userRouter.post("/register", async (req, res) => {
 
     const { email, pass, name, age } = req.body;              // destructuring the object that we are jsoning
@@ -34,32 +68,32 @@ userRouter.post("/register", async (req, res) => {
 })
 
 userRouter.post("/login", async (req, res) => {
-    const {email,pass} = req.body;
+    const { email, pass } = req.body;
     try {
-        const  isPresent = await UserModel.findOne({email});    // checking is this mail id is registered or not
-        if(isPresent) {                                         // if user is registered then decrypt the password and generate the token so that he can able to login
+        const isPresent = await UserModel.findOne({ email });    // checking is this mail id is registered or not
+        if (isPresent) {                                         // if user is registered then decrypt the password and generate the token so that he can able to login
             const hashedPassword = isPresent.pass;
-            bcrypt.compare(pass,hashedPassword,(err,result)=>{
-                if(result) {
+            bcrypt.compare(pass, hashedPassword, (err, result) => {
+                if (result) {
 
-                  /*--------------------------------------------------------------------------------------------------------------------------------- */  
+                    /*--------------------------------------------------------------------------------------------------------------------------------- */
                     // const token = jwt.sign({makingNote : 'backend'},'raj',{expiresIn : '1h'});     // creating token for verification 
 
                     // here the {makingNote : 'backend'} is a random string so intead of passing this we can pass our userID so that it can be used while
                     // doing anything with the node basically we are developing the Relationship between the usercollection and notesCollection so that we have
                     // if we have to work with any note we could be able to verify the user is valid or not 
-                  /*--------------------------------------------------------------------------------------------------------------------------------- */  
-                    
-                    const token = jwt.sign({userID : isPresent._id, name : isPresent.name},'raj',{expiresIn : '1h'});     // creating token for verification 
-                    res.json({"msg" : "Login successfull", "token" : token,"name":isPresent.name});
+                    /*--------------------------------------------------------------------------------------------------------------------------------- */
+
+                    const token = jwt.sign({ userID: isPresent._id, name: isPresent.name }, 'raj', { expiresIn: '1h' });     // creating token for verification 
+                    res.json({ "msg": "Login successfull", "token": token, "name": isPresent.name });
                 }
                 else {
-                    res.json({"msg":"Wrong password"});
+                    res.json({ "msg": "Wrong password" });
                 }
             })
         }
         else {
-            res.json({"msg":"Wrong email or Your account doesn't exist Please register first"})
+            res.json({ "msg": "Wrong email or Your account doesn't exist Please register first" })
         }
     } catch (error) {
         res.json({ "msg": error });
