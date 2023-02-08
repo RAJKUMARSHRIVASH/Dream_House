@@ -35,7 +35,11 @@ userRouter.get("/auth/github", async (req, res) => {
         }
     }).then(data =>{return data.json()});
     if(userDetails){
-        res.json({Name : userDetails.name, msg : "Successfully logged in"})
+        // res.sendFile(__dirname+"/index.html");
+        // res.json({Name : userDetails.name, msg : "Successfully logged in"})
+        res.set({"Content-type":"text/html"})
+        // res.send(`${userDetails.name} Successfully logged in <br> <button><a src='./frontend/index.html'> Home Page<button>`)
+        res.sendFile(__dirname+"/github.html")
     }else{
         res.json("Retry");
     }
