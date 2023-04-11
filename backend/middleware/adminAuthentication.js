@@ -1,7 +1,7 @@
 
 const jwt = require("jsonwebtoken");
 
-const adminAuthenticate = (req,res,next)=>{
+const adminAuthenticate = async(req,res,next)=>{
     const auth = JSON.parse(req.headers.authorization); // coz in frontend we stored the token in stringify format and sent it back
     // auth = JSON.parse(auth);
     if(auth.token) {
