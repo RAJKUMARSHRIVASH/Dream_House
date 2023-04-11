@@ -9,7 +9,7 @@ require("dotenv").config();
 adminRouter.use(express.json());
 
 adminRouter.post("/register", async (req, res) => {
-    const key = "raj";      // company key
+    const key = process.env.adminKey;      // company key
     // console.log(req.headers.companykey === key);
 
     if (req.headers.companykey === key) {
@@ -27,7 +27,7 @@ adminRouter.post("/register", async (req, res) => {
                     else {
                         const user = new AdminModel({ email, pass: encryptedPass, name });
                         await user.save();
-                        res.json("Registration successfull");
+                        res.json("Registration successful");
                     }
                 })
             }
@@ -49,7 +49,7 @@ adminRouter.post("/login", async (req, res) => {
             bcrypt.compare(pass, hashedPassword, (err, result) => {
                 if (result) {
                     const token = jwt.sign({ userID: isPresent._id, name: isPresent.name }, 'Admin', { expiresIn: '1h' });     // creating token for verification 
-                    res.json({ "msg": "Login successfull", "token": token, "name": isPresent.name });
+                    res.json({ "msg": "Login successful", "token": token, "name": isPresent.name });
                 }
                 else {
                     res.json({ "msg": "Wrong password" });

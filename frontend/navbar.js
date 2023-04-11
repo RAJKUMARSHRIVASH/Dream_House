@@ -11,73 +11,78 @@ document.getElementById("top-nav-bar").innerHTML = `
 </div>
 
 <div id="top-nav-bar-middle-box">
-<div id="top-nav-bar-middle-box-1">
-    <div>
-        <input type="text" placeholder="What can we help you find?">
+    <div id="top-nav-bar-middle-box-1">
+        <div>
+            <input type="text" placeholder="What can we help you find?">
+        </div>
+        <div>
+            <button onclick="prod()">Products</button>
+        </div>
+        <div>
+            <img src="./logo/Dream House.png" alt="logo" id="logo">
+        </div>
+        <div>
+            <p id="display">Orders & Sign in</p>
+            <img src="./logo/add-contact.png" alt="contact" id="login_popup">
+            <img src="./logo/location.png" alt="location">
+            <img src="./logo/heart.png" alt="wishlist">
+            <img src="./logo/shopping-cart.png" alt="cart" id="cart">
+        </div>
     </div>
-    <div>
-        <img src="./logo/Dream House.png" alt="logo" id="logo">
-    </div>
-    <div>
-        <p id="display">Orders & Sign in</p>
-        <img src="./logo/add-contact.png" alt="contact" id="login_popup">
-        <img src="./logo/location.png" alt="location">
-        <img src="./logo/heart.png" alt="wishlist">
-        <img src="./logo/shopping-cart.png" alt="cart" id="cart">
-    </div>
-</div>
-<div id="top-nav-bar-middle-box-2">
-    <p>WEDDING REGISTRY</p>
-    <p>FREE DESIGN SERVICE</p>
-    <p>TRADE PROGRAM</p>
-    <p>WHAT'S NEW</p>
-    <p>COLLABORATIONS</p>
-    <p>IN-STOCK</p>
-    <p>HOLIDAYS</p>
-</div>
-
+        <div id="top-nav-bar-middle-box-2">
+            <p>WEDDING REGISTRY</p>
+            <p>FREE DESIGN SERVICE</p>
+            <p>TRADE PROGRAM</p>
+            <p>WHAT'S NEW</p>
+            <p>COLLABORATIONS</p>
+            <p>IN-STOCK</p>
+            <p>HOLIDAYS</p>
+        </div>
 </div>
 
 <div id="top-nav-bar-bottom-box">
-<div class="top-nav-bar-bottom-box-text">Furniture</div>
-<div class="top-nav-bar-bottom-box-text">Outdoor</div>
-<div class="top-nav-bar-bottom-box-text">Tabletop & Bar</div>
-<div class="top-nav-bar-bottom-box-text">Kitchen</div>
-<div class="top-nav-bar-bottom-box-text">Decor & Pillows</div>
-<div class="top-nav-bar-bottom-box-text">Rugs</div>
-<div class="top-nav-bar-bottom-box-text">Lighting</div>
-<div class="top-nav-bar-bottom-box-text">Window</div>
-<div class="top-nav-bar-bottom-box-text">Bedding & Bath</div>
-<div class="top-nav-bar-bottom-box-text">Gifts</div>
-<div class="top-nav-bar-bottom-box-text">Sale</div>
-<div class="top-nav-bar-bottom-box-text">Kids</div>
+    <div class="top-nav-bar-bottom-box-text">Furniture</div>
+    <div class="top-nav-bar-bottom-box-text">Outdoor</div>
+    <div class="top-nav-bar-bottom-box-text">Tabletop & Bar</div>
+    <div class="top-nav-bar-bottom-box-text">Kitchen</div>
+    <div class="top-nav-bar-bottom-box-text">Decor & Pillows</div>
+    <div class="top-nav-bar-bottom-box-text">Rugs</div>
+    <div class="top-nav-bar-bottom-box-text">Lighting</div>
+    <div class="top-nav-bar-bottom-box-text">Window</div>
+    <div class="top-nav-bar-bottom-box-text">Bedding & Bath</div>
+    <div class="top-nav-bar-bottom-box-text">Gifts</div>
+    <div class="top-nav-bar-bottom-box-text">Sale</div>
+    <div class="top-nav-bar-bottom-box-text">Kids</div>
 </div>
 <div id="top-nav-bar-bottom-box-hover-body"></div>
 
 
 `
+function prod(){
+    window.location.href = "products.html";
+}
 
 //-------------------- redirect to home page if logo is clicked-------------------
 
-document.querySelector("#logo").addEventListener("click",()=>{
+document.querySelector("#logo").addEventListener("click", () => {
     window.location.href = "index.html";
 })
 
 //-------------------- redirect to login page if contact logo is clicked-------------------
 
-document.querySelector("#login_popup").addEventListener("click",()=>{
+document.querySelector("#login_popup").addEventListener("click", () => {
     window.location.href = "login.html"
 })
 
 //-------------------- redirect to cart page if cart logo is clicked-------------------
 
-document.querySelector("#cart").addEventListener("click",()=>{
+document.querySelector("#cart").addEventListener("click", () => {
     window.location.href = "cart.html"
 })
 
 //----------------------------------------------------------------------------------
 
-document.querySelector("#admin").addEventListener("click",()=>{
+document.querySelector("#admin").addEventListener("click", () => {
     window.location.href = "adminLoginSignup.html"
 })
 
@@ -183,6 +188,6 @@ for (const div of arr) {
 }
 
 let raj = document.querySelector("#top-nav-bar-bottom-box-hover-body");
-raj.addEventListener("mouseover",()=>{
+raj.addEventListener("mouseover", () => {
     raj.style.visibility = "visible";
 })
