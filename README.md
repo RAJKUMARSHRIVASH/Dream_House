@@ -2,6 +2,7 @@
 # Dream House
 
 Dream House is basically an E-commerce website for the best quality furniture and decorative items along with the full interior design of the home as well as office indoor and outdoor etc.
+This website is the clone of Crate and Barrel.
 
 
 
@@ -70,42 +71,46 @@ To run this project, you will need to add the following environment variables to
 #### Welcome 
 
 ```http
-  GET /home
+  GET /
 ```
 
 #### Get | Post | Update | Delete User's
 
 ```http
-  GET /user
+  GET /users
 ```
 #### Get | Post | Update | Delete Appointment's
 ```http
-  GET /appointments
+  GET /products
  ```
 
 #### Get | Post | Update | Delete Doctor's
 ```http
-  GET /doctors
+  GET /admins
+```
+
+#### Get | Post | Update | Delete Doctor's
+```http
+  GET /cart
 ```
 
 
 
 ## Demo
 
-https://lifecare-mwbk.onrender.com/
+https://dreamhouseraj.netlify.app/
+
+https://dream-house.onrender.com/
 
 ## Screenshots
 
-![App Screenshot](https://i.imgur.com/vNWL4lR.jpeg)
-![App Screenshot](https://i.imgur.com/BFSWz9I.jpeg)
+![App Screenshot](https://i.imgur.com/x3qaoVs.png)
+
+![App Screenshot](https://i.imgur.com/RJnReRF.png)
+
+![App Screenshot](https://i.imgur.com/Hrv95pl.png)
 
 
-## Authors
+## Author
 
-- [@Abhay Singh](https://github.com/DanteHaxor)
 - [@Raj Kumar Sen](https://github.com/RAJKUMARSHRIVASH)
-- [@Shaik Ateeq Ahmed](https://github.com/Shaikateeqahmed)
-- [@Hassan Khan](https://github.com/allabovehassan)
-- [@Mohammad Mujaheed](https://github.com/mujaheed13)
-
-
