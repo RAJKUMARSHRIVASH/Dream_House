@@ -18,6 +18,7 @@ app.use("/admins",adminRouter);         // but if we need to perform post patch 
                                         // a middle ware that is adminAuthenticate from that it can be ensured that user is a admin or not
 app.use("/cart",cartRouter);
 
+// throwing the home page of frontend from the backend when base url is opened
 app.get("/",(req,res)=>{
     app.use(express.static(path.join(__dirname,"../", "frontend")));
     res.sendFile(path.resolve(__dirname,"../", "frontend","index.html"));
