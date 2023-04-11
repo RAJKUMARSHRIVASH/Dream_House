@@ -64,6 +64,8 @@
 
             </form>
         `
+
+        // admin login
         document.querySelector("form").addEventListener("submit", async (e) => {
             e.preventDefault();
             localStorage.removeItem("userdata");
@@ -85,12 +87,13 @@
             let data = await fetchdata.json();
             localStorage.setItem("admin", JSON.stringify({ "token": data.token, "name": data.name }));
             alert(data.msg);
-            if(data.msg == "Login successfull"){
+            if(data.msg == "Login successful"){
                 window.location.href = "adminProducts.html"
             }
         })
     })
 
+    // admin register
     let check = 0;
     document.querySelector("#signup").addEventListener("click", () => {
         if (check == 0) {
@@ -143,6 +146,10 @@
             })
             let data = await fetchdata.json();
             alert(data);
+            if(data == "Registration successful"){
+                check = 0;
+                document.querySelector("#card").style.display = "none";
+            }
         })
     })
 
