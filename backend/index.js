@@ -5,9 +5,8 @@ const {userRouter} = require("./routes/user.route");
 const {productRouter} = require("./routes/productRoute");
 const {adminRouter} = require("./routes/adminRoute");
 const {cartRouter} = require("./routes/cartRoute");
-const dotenv = require("dotenv");
-
-dotenv.config();
+require("dotenv").config();
+const path = require('path');
 const cors = require("cors");
 
 const app = express();
@@ -19,6 +18,10 @@ app.use("/admins",adminRouter);         // but if we need to perform post patch 
                                         // a middle ware that is adminAuthenticate from that it can be ensured that user is a admin or not
 app.use("/cart",cartRouter);
 
+app.get("/",(req,res)=>{
+    app.use(express.static(path.join(__dirname,"../", "frontend")));
+    res.sendFile(path.resolve(__dirname,"../", "frontend","index.html"));
+});
 
 app.listen(process.env.port,async()=>{
     try {
