@@ -12,6 +12,7 @@ if (data) {
                 background-color : red;
                 color : white;
                 border-radius : 5px;
+                cursor:pointer;
             }
         </style>
         `;
