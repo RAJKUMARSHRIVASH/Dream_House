@@ -6,6 +6,7 @@ const {productRouter} = require("./routes/productRoute");
 const {adminRouter} = require("./routes/adminRoute");
 const {cartRouter} = require("./routes/cartRoute");
 const dotenv = require("dotenv");
+
 dotenv.config();
 const cors = require("cors");
 
@@ -28,3 +29,13 @@ app.listen(process.env.port,async()=>{
     }
     console.log(`server is running at port ${process.env.port}`);
 })
+
+// app.get('/auth/google',
+//   passport.authenticate('google', { scope: ['profile'] }));
+
+// app.get('/auth/google/callback', 
+//   passport.authenticate('google', { failureRedirect: '/login' }),
+//   function(req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect('/');
+//   });

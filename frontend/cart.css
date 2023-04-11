@@ -1,0 +1,17 @@
+#middle-cart {
+    height: 100vh;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+    gap: 20px;
+}
+
+#total {
+    border: 1px solid;
+    width: 30%;
+}
+
+#items {
+    border: 1px solid;
+    width: 80%;
+}

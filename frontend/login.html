@@ -6,157 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>login page</title>
-    <style>
-        body {
-            font-family: 'Sora', sans-serif;
-            margin: 0;
-            padding: 0;
-            /* overflow-y: hidden; */
-            overflow-x: hidden;
-        }
-
-        .main-container {
-            /* border: 1px solid green; */
-            height: 100vh;
-        }
-
-        #login-card {
-            /* border: 1px solid; */
-            width: 15%;
-            margin-top: 5vh;
-            margin-left: 18vh;
-            display: flex;
-            flex-direction: column;
-            font-size: small;
-            height: 30vh;
-            gap: 8px;
-        }
-
-        #login-card>h1 {
-            font-size: 20px;
-            font-weight: 500;
-            margin-bottom: 25px;
-
-        }
-
-        #login-card>input {
-            border: 0px;
-            border-bottom: 1px solid grey;
-            font-size: 12px;
-        }
-
-        #login-card>input:focus {
-            outline: 0px;
-
-        }
-
-        #login-card>input:hover {
-            cursor: pointer;
-
-        }
-
-        #login-card>p {
-            color: grey;
-            font-size: 10px;
-        }
-
-        #login-card>#login-submit-button {
-            margin-top: 10%;
-            border-bottom: 0px;
-            padding-top: 4%;
-            padding-bottom: 4%;
-            background-color: black;
-            color: aliceblue;
-        }
-
-        #login-card>#login-submit-button:hover {
-
-            background-color: rgb(57, 56, 56);
-
-        }
-
-        label {
-            color: grey;
-            transform: translate(0.25rem, -2.8rem);
-            transition: all 0.2s ease-out;
-        }
-
-        input:focus+label {
-            transform: translate(0, -2.75rem);
-            display: block;
-            font-size: 10px;
-            /* to lowering the the text size when moving out the text */
-        }
-
-        input :not(:placeholder-shown)+label {
-            transform: translate(0, -2.75rem);
-            display: block;
-            font-size: 10px;
-            /* to lowering the the text size when moving out the text */
-        }
-
-        #card {
-            padding-top: 10vh;
-            display: flex;
-            gap: 15%;
-            height: 70vh;
-        }
-
-        #create-suggestion {
-            width: 22%;
-            margin-top: 5vh;
-            margin-left: 18vh;
-            display: flex;
-            flex-direction: column;
-            font-size: 12px;
-            height: 30vh;
-            gap: 5%;
-        }
-
-        #create-suggestion>h1 {
-            font-size: 20px;
-            font-weight: 500;
-            margin-bottom: 10px;
-        }
-
-        #create-suggestion>button {
-            margin-top: 10%;
-            border-bottom: 0px;
-            padding-top: 2%;
-            padding-bottom: 2%;
-            margin-right: 20%;
-            background-color: black;
-            color: aliceblue;
-        }
-
-        #create-suggestion>button:hover {
-            background-color: rgb(57, 56, 56);
-
-        }
-
-        #eye {
-            transform: translate(90%, 130%);
-            /*to reposition the element or move the element */
-        }
-
-        #eye:hover {
-            /* color: blue; */
-            cursor: pointer;
-        }
-
-        #oauth {
-            text-align: center;
-            width: 80%;
-            display: flex;
-            gap: 10px;
-            align-items: center;
-        }
-        #oauth > img {
-            width: 25px;
-        }
-
-    </style>
-    <link rel="stylesheet" href="./topNavBar.css">
+    <link rel="stylesheet" href="./login.css">
+    <link rel="stylesheet" href="./navbar.css">
     <link rel="stylesheet" href="./footer.css">
     <link rel="icon" href="./logo/Copy of dream HOuse.ico" type="imgae/x-icon">
 
@@ -164,62 +15,7 @@
 
 <body>
     <div class="main-container">
-        <section id="top-nav-bar">
-
-            <div id="top-nav-bar-upper-box">
-                <p> Dream House</p>
-                <p> Dream House & Kids</p>
-                <p>Hindustaan | Bhilai</p>
-                <img src="./logo/Flag_of_India.svg.png" alt="Indian Flag">
-                <button id="admin">Admin</button>
-
-            </div>
-
-            <div id="top-nav-bar-middle-box">
-                <div id="top-nav-bar-middle-box-1">
-                    <div>
-                        <input type="text" placeholder="What can we help you find?">
-                    </div>
-                    <div>
-                        <img src="./logo/Dream House.png" alt="logo" id="logo">
-                    </div>
-                    <div>
-                        <p id="display">Orders & Sign in</p>
-                        <img src="./logo/add-contact.png" alt="contact" id="login_popup">
-                        <img src="./logo/location.png" alt="location">
-                        <img src="./logo/heart.png" alt="wishlist">
-                        <img src="./logo/shopping-cart.png" alt="cart" id="cart">
-                    </div>
-                </div>
-                <div id="top-nav-bar-middle-box-2">
-                    <p>WEDDING REGISTRY</p>
-                    <p>FREE DESIGN SERVICE</p>
-                    <p>TRADE PROGRAM</p>
-                    <p>WHAT'S NEW</p>
-                    <p>COLLABORATIONS</p>
-                    <p>IN-STOCK</p>
-                    <p>HOLIDAYS</p>
-                </div>
-
-            </div>
-
-            <div id="top-nav-bar-bottom-box">
-                <div class="top-nav-bar-bottom-box-text">Furniture</div>
-                <div class="top-nav-bar-bottom-box-text">Outdoor</div>
-                <div class="top-nav-bar-bottom-box-text">Tabletop & Bar</div>
-                <div class="top-nav-bar-bottom-box-text">Kitchen</div>
-                <div class="top-nav-bar-bottom-box-text">Decor & Pillows</div>
-                <div class="top-nav-bar-bottom-box-text">Rugs</div>
-                <div class="top-nav-bar-bottom-box-text">Lighting</div>
-                <div class="top-nav-bar-bottom-box-text">Window</div>
-                <div class="top-nav-bar-bottom-box-text">Bedding & Bath</div>
-                <div class="top-nav-bar-bottom-box-text">Gifts</div>
-                <div class="top-nav-bar-bottom-box-text">Sale</div>
-                <div class="top-nav-bar-bottom-box-text">Kids</div>
-            </div>
-            <div id="top-nav-bar-bottom-box-hover-body"></div>
-
-        </section>
+        <section id="top-nav-bar"></section>    <!-- data will be imported by navbar.js -->
         <div id="card">
             <form action="./searchPage.html" id="login-card">
                 <h1>LOG IN</h1>
@@ -251,109 +47,13 @@
 
 
         </div>
-        <section id="bottom-footer">
-            <div>
-                <div>
-                    <img src="https://images.crateandbarrel.com/is/image/Crate/png-icon-CustomerService-white?fmt=png-alpha"
-                        alt="contact">
-                    <div>
-                        <p style="font-weight: bold;">Contact Us</p>
-                        <p>Text: 312-779-1979</p>
-                        <p>Mon - Fri: 8 am - 8 pm CT</p>
-                        <p>Sat - Sun: 8 am - 7 pm CT</p>
-                    </div>
-                </div>
-                <div>
-                    <img src="https://www.freeiconspng.com/thumbs/credit-card-icon-png/credit-card-2-icon-7.png"
-                        alt="contact">
-                    <div>
-                        <p style="font-weight: bold;">Dream Hoiuse Credit Card</p>
-                        <p>Text: 312-779-1979</p>
-                        <p>Mon - Fri: 8 am - 8 pm CT</p>
-                    </div>
-                </div>
-
-                <div>
-                    <img src="https://www.transparentpng.com/thumb/cube/aneZtd-cube-cut-out.png" alt="">
-                    <div>
-                        <p style="font-weight: bold;">Order Tracking & Schedule Delivery</p>
-                        <p>Find out when your online purchase will arrive or schedule a delivery.</p>
-                    </div>
-                </div>
-                <div>
-                    <img src="https://images.crateandbarrel.com/is/image/Crate/CB-logo-GR_ampersand-white?fmt=png-alpha&wid=250&hei=419"
-                        alt="">
-                </div>
-            </div>
-            <hr>
-            <div>
-                <div>
-                    <div>
-                        <p style="font-weight: bold;">Our Company</p>
-                        <p>About us</p>
-                        <p>Careers</p>
-                        <p>Responsible designs</p>
-                        <p>Store Locations and Events</p>
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <p style="font-weight: bold;">Resources</p>
-                        <p>Customer service</p>
-                        <p>Account</p>
-                        <p>Return Policy</p>
-                        <p>Shipping Information</p>
-                        <p>Email and Text Preferences</p>
-                        <p>Gift Cards Catalogs</p>
-                        <p>Product Recalls</p>
-                        <p>Accesibility Statement</p>
-                        <p>CA supply chains Act</p>
-                        <p>Do not sell my personal Information</p>
-                        <p>Cookies settings</p>
-                    </div>
-                </div>
-
-                <div>
-                    <div>
-                        <p style="font-weight: bold;">Shopping App</p>
-                        <p>Try our View in Your Room feature, manage registries and save payment info.</p>
-                        <img style="width: 60%;"
-                            src="https://www.pngmart.com/files/10/Download-On-The-App-Store-PNG-Transparent-Image.png"
-                            alt="download on apple app store">
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <p style="font-weight: bold;">Social Media</p>
-                        <div id="social-media">
-                            <img id="fb" src="./logo/fb.png" alt="FACEBOOK">
-                            <img id="insta" src="./logo/insta.png" alt="INSTA">
-                            <img id="pinterest" src="./logo/pinterestlogo.jpg" alt="Pinterest">
-                            <img id="youtube" src="./logo/ytlogo.png" alt="YouTube">
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <hr>
-            <br>
-            <div id="lastest">
-                <img style="width: 220px;" src="./logo/Dream House.png" alt="Dream House">
-                <p style="font-size: small;">©2023 Dream House. All rights reserved. Terms of Use Privacy Site Index Ad
-                    Choices Co-Browse
-                    If you are using a screen reader and are having problems using this website, please call (800)
-                    967-6696 for assistance.</p>
-            </div>
-            <br>
-
-        </section>
-
+        <section id="bottom-footer"></section> <!-- footer html code will be injected by footer.js -->
     </div>
 </body>
 
 </html>
 <script src="./navbar.js"></script>
+<script src="./footer.js"></script>
 <script src="./identification.js"></script>
 <script>
 
@@ -422,8 +122,8 @@
             .then(message => {
                 localStorage.setItem("userdata", JSON.stringify({ "token": message.token, "name": message.name }));
                 alert(message.msg);
-                if (message.msg == "Login successfull") {
-                    history.back()      // to go back into the page from where I have been com from
+                if (message.msg == "Login successful") {
+                    history.back()      // to go back into the page from where I have been come from
                 }
             })
             .catch(err => {
