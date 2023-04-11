@@ -1,0 +1,101 @@
+body {
+    font-family: 'Sora', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* overflow-y: hidden; */
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.main-container {
+    /* border: 1px solid green; */
+    height: 100vh;
+}
+
+#left img {
+    width: 30%;
+    position: absolute;
+    top: 20%;
+    left: 5%;
+}
+
+#right img {
+    width: 28%;
+    position: absolute;
+    top: 35%;
+    right: 5%;
+}
+
+#body-container {
+    margin: 20px;
+    height: 80vh;
+    text-align: center;
+    background-color: aliceblue;
+}
+
+
+#body-container>button {
+    border: 0;
+    background-color: bisque;
+    padding: 5px 15px;
+    margin: 5px;
+    border-radius: 5px;
+    color: rgb(249, 61, 133);
+    font-weight: bold;
+
+}
+
+#body-container>button:hover {
+    background-color: rgb(251, 201, 139);
+}
+
+#card {
+    border: 1px solid silver;
+    margin: auto;
+    width: 22%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    margin-top: 20px;
+    border-radius: 10px;
+    text-align: end;
+    margin-top: 10px;
+    padding-top: 10px;
+    display: none;
+}
+
+input {
+    margin: 10px;
+    padding: 5px;
+}
+
+input:focus {
+    outline: 1px solid silver;
+}
+
+label {
+    color: rgb(52, 52, 253);
+}
+
+#register {
+    border: 0;
+    background-color: rgb(253, 68, 185);
+    padding: 5px 15px;
+    border-radius: 5px;
+    color: aliceblue;
+}
+
+#register:hover {
+    background-color: rgb(255, 108, 201);
+
+}
+
+#login {
+    border: 0;
+    background-color: rgb(253, 68, 185);
+    padding: 5px 15px;
+    border-radius: 5px;
+    color: aliceblue;
+}
+
+#login:hover {
+    background-color: rgb(255, 108, 201);
+}

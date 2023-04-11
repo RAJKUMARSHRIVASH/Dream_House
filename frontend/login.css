@@ -1,0 +1,148 @@
+body {
+    font-family: 'Sora', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* overflow-y: hidden; */
+    overflow-x: hidden;
+}
+
+.main-container {
+    /* border: 1px solid green; */
+    height: 100vh;
+}
+
+#login-card {
+    /* border: 1px solid; */
+    width: 15%;
+    margin-top: 5vh;
+    margin-left: 18vh;
+    display: flex;
+    flex-direction: column;
+    font-size: small;
+    height: 30vh;
+    gap: 8px;
+}
+
+#login-card>h1 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 25px;
+
+}
+
+#login-card>input {
+    border: 0px;
+    border-bottom: 1px solid grey;
+    font-size: 12px;
+}
+
+#login-card>input:focus {
+    outline: 0px;
+
+}
+
+#login-card>input:hover {
+    cursor: pointer;
+
+}
+
+#login-card>p {
+    color: grey;
+    font-size: 10px;
+}
+
+#login-card>#login-submit-button {
+    margin-top: 10%;
+    border-bottom: 0px;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    background-color: black;
+    color: aliceblue;
+}
+
+#login-card>#login-submit-button:hover {
+
+    background-color: rgb(57, 56, 56);
+
+}
+
+label {
+    color: grey;
+    transform: translate(0.25rem, -2.8rem);
+    transition: all 0.2s ease-out;
+}
+
+input:focus+label {
+    transform: translate(0, -2.75rem);
+    display: block;
+    font-size: 10px;
+    /* to lowering the the text size when moving out the text */
+}
+
+input :not(:placeholder-shown)+label {
+    transform: translate(0, -2.75rem);
+    display: block;
+    font-size: 10px;
+    /* to lowering the the text size when moving out the text */
+}
+
+#card {
+    padding-top: 10vh;
+    display: flex;
+    gap: 15%;
+    height: 70vh;
+}
+
+#create-suggestion {
+    width: 22%;
+    margin-top: 5vh;
+    margin-left: 18vh;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    height: 30vh;
+    gap: 5%;
+}
+
+#create-suggestion>h1 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+#create-suggestion>button {
+    margin-top: 10%;
+    border-bottom: 0px;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-right: 20%;
+    background-color: black;
+    color: aliceblue;
+}
+
+#create-suggestion>button:hover {
+    background-color: rgb(57, 56, 56);
+
+}
+
+#eye {
+    transform: translate(90%, 130%);
+    /*to reposition the element or move the element */
+}
+
+#eye:hover {
+    /* color: blue; */
+    cursor: pointer;
+}
+
+#oauth {
+    text-align: center;
+    width: 80%;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#oauth>img {
+    width: 25px;
+}

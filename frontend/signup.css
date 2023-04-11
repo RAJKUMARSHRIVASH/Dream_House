@@ -1,0 +1,171 @@
+body {
+    font-family: 'Sora', sans-serif;
+    margin: 0;
+    padding: 0;
+    /* overflow-y: hidden; */
+    overflow-x: hidden;
+}
+
+.main-container {
+    /* border: 1px solid green; */
+    /* height: 100vh; */
+
+}
+
+#card {
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+}
+
+#login-card {
+    /* border: 1px solid; */
+    margin-top: 3%;
+    width: 30%;
+    margin-left: 18vh;
+    display: flex;
+    flex-direction: column;
+    font-size: small;
+    height: 30vh;
+    gap: 4%;
+}
+
+#login-card>h1 {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 25px;
+
+}
+
+#login-card>input {
+    border: 0px;
+    border-bottom: 1px solid grey;
+    font-size: 12px;
+}
+
+#login-card>select {
+    border: 0px;
+    border-bottom: 1px solid grey;
+    font-size: 12px;
+}
+
+#login-card>input:focus {
+    outline: 0px;
+
+}
+
+#login-card>select:focus {
+    outline: 0px;
+
+}
+
+#login-card>input:hover {
+    cursor: pointer;
+
+}
+
+#login-card>select:hover {
+    cursor: pointer;
+
+}
+
+#login-submit-button {
+    border-bottom: 0px;
+    padding-top: 4%;
+    padding-bottom: 4%;
+    background-color: black;
+    color: aliceblue;
+    margin-top: 2%;
+    font-weight: bold;
+}
+
+#login-submit-button:hover {
+    background-color: rgb(60, 59, 59);
+}
+
+label {
+    color: grey;
+    transform: translate(0.25rem, -2.8rem);
+    transition: all 0.2s ease-in-out;
+}
+
+.countrsateLable {
+    color: grey;
+    transform: translate(0.25rem, 0.5rem);
+    transition: all 0.2s ease-out;
+    margin-top: -10%;
+
+}
+
+input:focus+label {
+    transform: translate(0, -2.75rem);
+    display: block;
+    font-size: 10px;
+    /* to lowering the the text size when moving out the text */
+}
+
+select:focus {
+    display: block;
+    font-size: 10px;
+    /* to lowering the the text size when moving out the text */
+}
+
+input :not(:placeholder-shown)+label {
+    transform: translate(0, -2.75rem);
+    display: block;
+    font-size: 10px;
+    /* to lowering the the text size when moving out the text */
+}
+
+select :not(:placeholder-shown) {
+    transform: translate(0, -2.75rem);
+    display: block;
+    font-size: 10px;
+    /* to lowering the the text size when moving out the text */
+}
+
+.checkbox {
+    position: relative;
+}
+
+span {
+    color: grey;
+    font-size: 12px;
+}
+
+span>input:hover {
+    cursor: pointer;
+}
+
+#eye {
+    transform: translate(95%, 130%);
+    /*to reposition the element or move the element */
+    margin-top: -7%;
+}
+
+#eye:hover {
+    cursor: pointer;
+}
+
+#poster {
+    border: 1px solid;
+    width: 70%;
+    margin: 4%;
+    border-radius: 20px;
+    background: #020f70;
+
+}
+
+#poster img {
+    position: absolute;
+    width: 30%;
+    border-radius: 20px;
+    left: 55%;
+    top: 48%;
+}
+
+#clickhere {
+    color: #020f70;
+    font-weight: bold;
+}
