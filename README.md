@@ -4,8 +4,6 @@
 Dream House is basically an E-commerce website for the best quality furniture and decorative items along with the full interior design of the home as well as office indoor and outdoor etc.
 This website is the clone of Crate and Barrel.
 
-
-
 ## Features
 
 - Cross platform
@@ -74,22 +72,22 @@ To run this project, you will need to add the following environment variables to
   GET /
 ```
 
-#### Get | Post | Update | Delete User's
+#### Get | Post | Update | Delete Users
 
 ```http
   GET /users
 ```
-#### Get | Post | Update | Delete Appointment's
+#### Get | Post | Update | Delete Products
 ```http
   GET /products
  ```
 
-#### Get | Post | Update | Delete Doctor's
+#### Get | Post | Update | Delete admins
 ```http
-  GET /admins
+  GET /admin
 ```
 
-#### Get | Post | Update | Delete Doctor's
+#### Get | Post | Update | Delete cart items
 ```http
   GET /cart
 ```
