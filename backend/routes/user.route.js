@@ -86,7 +86,7 @@ userRouter.post("/login", async (req, res) => {
                     // if we have to work with any note we could be able to verify the user is valid or not 
                     /*--------------------------------------------------------------------------------------------------------------------------------- */
 
-                    const token = jwt.sign({ userID: isPresent._id, name: isPresent.name }, 'raj', { expiresIn: '1h' });     // creating token for verification 
+                    const token = jwt.sign({ userID: isPresent._id, name: isPresent.name }, 'raj', { expiresIn: '3h' });     // creating token for verification 
                     res.json({ "msg": "Login successful", "token": token, "name": isPresent.name });
                 }
                 else {

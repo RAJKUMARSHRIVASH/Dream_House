@@ -20,11 +20,22 @@ productRouter.get("/", async (req, res) => {
     }
 })
 
+// for cart items
+productRouter.get("/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        const product = await ProductModel.findOne({_id:id});
+        res.json(product);
+    } catch (error) {
+        console.log(error);
+        res.json({ "msg": error });
+        console.log("Something went wrong");
+    }
+})
+
 // adminAuthentication middleware here this will be allowd only who have admin id
 
-productRouter.use(adminAuthenticate);
-
-productRouter.post("/create", async (req, res) => {
+productRouter.post("/create",adminAuthenticate, async (req, res) => {
     // const {title,image,category,price,description} = req.body;
     const payload = req.body;
 

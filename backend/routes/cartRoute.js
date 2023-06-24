@@ -6,29 +6,33 @@ const { authenticate } = require("../middleware/normalAuthentication");
 
 cartRouter.use(express.json());
 
-cartRouter.use(authenticate);   // authenticate that user is logged in or not 
+cartRouter.get("/",authenticate, async (req, res) => { // authenticate that user is logged in or not 
+    const userID = req.body.userID;
+    try {
+        const product = await CartModel.find({userID});
+        res.json(product);
+    } catch (error) {
+        res.json({ "msg": error });
+        console.log("Something went wrong",error);
+    }
+});
 
-// cartRouter.get("/", async (req, res) => {
+cartRouter.get("/admin_cart",adminAuthenticate, async (req, res) => { // authenticate that user is a admin
+    
+    try {
+        const product = await CartModel.find();
+        res.json(product);
+    } catch (error) {
+        res.json({ "msg": error });
+        console.log("Something went wrong",error);
+    }
+})
 
-
-//     try {
-//         const product = await ProductModel.find();
-//         res.json(product);
-//     } catch (error) {
-//         console.log(error);
-//         res.json({ "msg": error });
-//         console.log("Something went wrong");
-//     }
-// })
-
-// cartRouter.use(adminAuthenticate);
-
-cartRouter.post("/add", async (req, res) => {
+cartRouter.post("/add",authenticate, async (req, res) => {
 
     const userID = req.body.userID;
     const productID = req.headers.productid;
     const payload = { userID, productID }
-    // console.log(payload);
     const data = await CartModel.findOne({ userID:userID,productID:productID });
 
     if (data) {

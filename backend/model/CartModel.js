@@ -4,7 +4,8 @@ const mongoose = require("mongoose")
 const cartSchema = mongoose.Schema({
 
     productID : {type : String,required : true},
-    userID : {type : String,required : true}
+    userID : {type : String,required : true},
+    qty : {type:Number,default:1}
     
 })
 
