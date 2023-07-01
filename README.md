@@ -2,11 +2,11 @@
 # Dream House
 
 Dream House is basically an E-commerce website for the best quality furniture and decorative items along with the full interior design of the home as well as office indoor and outdoor etc.
-This website is the clone of Crate and Barrel.
+This website is a clone of Crate and Barrel.
 
 ## Features
 
-- Cross platform
+- Cross-platform
 - Responsive
 - Authorization
 - Authentication
@@ -95,11 +95,9 @@ To run this project, you will need to add the following environment variables to
 
 
 ## Demo
-
-https://dreamhouseraj.netlify.app/
-
+```
 https://dream-house.onrender.com/
-
+```
 ## Screenshots
 
 ![App Screenshot](https://i.imgur.com/x3qaoVs.png)
