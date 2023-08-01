@@ -1,5 +1,7 @@
 
-let data = JSON.parse(localStorage.getItem("userdata"));
+// let data = JSON.parse(localStorage.getItem("userdata"));
+let data = JSON.parse(Cookies.get("userdata"));
+
 if (data) {
 
     if (data.name) {
@@ -16,7 +18,8 @@ if (data) {
         `;
         document.querySelector("#logout").addEventListener("click", async () => {
             try {
-                localStorage.removeItem("userdata");
+                // localStorage.removeItem("userdata");
+                Cookies.remove("userdata");
                 Swal.fire("Logged out successfully")
                 window.location.href = "index.html";
             } catch (error) {

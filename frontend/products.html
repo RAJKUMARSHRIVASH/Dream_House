@@ -137,6 +137,8 @@
 <script src="./identification.js"></script>
 <script src="./baseUrl.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Include the js-cookie library from a CDN -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 
 <script>
 
@@ -223,7 +225,8 @@
             const fdata = await fetch(`${baseURL}/cart/add`, {
                 method: "POST",
                 headers: {
-                    "Authorization": localStorage.getItem("userdata"),
+                    // "Authorization": localStorage.getItem("userdata"),
+                    "Authorization": Cookies.get("userdata"),
                     "productId" : id
                 }
             })

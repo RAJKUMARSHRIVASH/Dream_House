@@ -139,6 +139,8 @@
 <script src="./adminIdentification.js"></script>
 <script src="./baseUrl.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Include the js-cookie library from a CDN -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 
 <script>
 
@@ -279,7 +281,8 @@
                         // string format only because headers passes only string even if I try to parse
                         // so it will be parsed at backend at adminAuthentication when needed.
 
-                        "Authorization": localStorage.getItem("admin")
+                        // "Authorization": localStorage.getItem("admin")
+                        "Authorization": Cookies.get("admin")
                     },
                     body: JSON.stringify(payload)
                 });
@@ -305,7 +308,8 @@
             const ftdata = await fetch(`${baseURL}/products/delete/${id}`, {
                 method: "DELETE",
                 headers: {
-                    "Authorization": localStorage.getItem("admin")
+                    // "Authorization": localStorage.getItem("admin")
+                    "Authorization": Cookies.get("admin")
                 }
             })
             const data = await ftdata.json();
@@ -379,7 +383,8 @@
                     method: "PATCH",
                     headers: {
                         "Content-type": "application/json",
-                        "Authorization": localStorage.getItem("admin")
+                        // "Authorization": localStorage.getItem("admin")
+                        "Authorization": Cookies.get("admin")
                     },
                     body: JSON.stringify(payload)
                 })

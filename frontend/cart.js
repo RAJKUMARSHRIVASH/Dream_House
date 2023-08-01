@@ -7,7 +7,8 @@ async function getItem() {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "authorization": localStorage.getItem("userdata")
+            // "authorization": localStorage.getItem("userdata")
+            "authorization": Cookies.get("userdata")
         }
     });
     const data = await fetched.json();
@@ -76,7 +77,8 @@ async function deleteItem(id) {
         method: "DELETE",
         headers: {
             "Content-Type": "application/json",
-            "authorization": localStorage.getItem("userdata")
+            // "authorization": localStorage.getItem("userdata")
+            "authorization": Cookies.get("userdata")
         }
     });
     const response = await fData.json();
@@ -94,7 +96,8 @@ async function plus(id) {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": localStorage.getItem("userdata")
+            // "Authorization": localStorage.getItem("userdata")
+            "Authorization": Cookies.get("userdata")
         }
     });
     const data = await fData.json();
@@ -113,7 +116,8 @@ async function minus(id) {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": localStorage.getItem("userdata")
+            // "Authorization": localStorage.getItem("userdata")
+            "Authorization": Cookies.get("userdata")
         }
     });
     const data = await fData.json();

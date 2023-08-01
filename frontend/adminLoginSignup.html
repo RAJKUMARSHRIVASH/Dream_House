@@ -40,6 +40,8 @@
 <script src="./adminIdentification.js"></script>
 <script src="./baseUrl.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Include the js-cookie library from a CDN -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 
 <script>
 
@@ -70,7 +72,8 @@
         // admin login
         document.querySelector("form").addEventListener("submit", async (e) => {
             e.preventDefault();
-            localStorage.removeItem("userdata");
+            // localStorage.removeItem("userdata");
+            Cookies.remove("userdata")
             const email = document.querySelector("#email").value;
             const pass = document.querySelector("#password").value;
 
@@ -87,7 +90,8 @@
                 body: JSON.stringify(payload)
             })
             let data = await fetchdata.json();
-            localStorage.setItem("admin", JSON.stringify({ "token": data.token, "name": data.name }));
+            // localStorage.setItem("admin", JSON.stringify({ "token": data.token, "name": data.name }));
+            Cookies.set("admin", JSON.stringify({ "token": data.token, "name": data.name }));
             Swal.fire(data.msg);
             if(data.msg == "Login successful"){
                 window.location.href = "adminProducts.html"
@@ -156,7 +160,8 @@
     })
 
     document.querySelector("#Product-page-btn").addEventListener("click",()=>{
-        const tokenObj = JSON.parse(localStorage.getItem("admin"));
+        // const tokenObj = JSON.parse(localStorage.getItem("admin"));
+        const tokenObj = JSON.parse(Cookies.get("admin"));
         if(tokenObj && tokenObj.token){
             window.location.href = "adminProducts.html";
         }else {

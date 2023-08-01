@@ -57,6 +57,8 @@
 <script src="./identification.js"></script>
 <script src="./baseUrl.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Include the js-cookie library from a CDN -->
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 
 <script>
 
@@ -101,7 +103,8 @@
 
     document.querySelector("form").addEventListener("submit", async (e) => {
         e.preventDefault();
-        localStorage.removeItem("admin");
+        // localStorage.removeItem("admin");
+        Cookies.remove("admin");
         let email = document.querySelector("#email").value;
         let pass = document.querySelector("#password").value;
 
@@ -121,7 +124,8 @@
                 return response.json()
             })
             .then(message => {
-                localStorage.setItem("userdata", JSON.stringify({ "token": message.token, "name": message.name }));
+                // localStorage.setItem("userdata", JSON.stringify({ "token": message.token, "name": message.name }));
+                Cookies.set("userdata", JSON.stringify({ "token": message.token, "name": message.name }));
                 Swal.fire(message.msg);
                 if (message.msg == "Login successful") {
                     history.back()      // to go back into the page from where I have been come from
