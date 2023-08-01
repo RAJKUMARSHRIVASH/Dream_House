@@ -138,6 +138,7 @@
 <script src="./footer.js"></script>
 <script src="./adminIdentification.js"></script>
 <script src="./baseUrl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 
@@ -208,7 +209,7 @@
             });
 
         } catch (error) {
-            alert(error)
+            Swal.fire(error)
         }
     }
     display();
@@ -284,7 +285,7 @@
                 });
 
                 const data = await fetchdata.json();
-                alert(data.msg);
+                Swal.fire(data.msg);
                 document.querySelector("#addProduct").style.display = "none";
                 document.querySelector("#products").classList.remove("active");
                 display();
@@ -308,7 +309,7 @@
                 }
             })
             const data = await ftdata.json();
-            alert(data.msg);
+            Swal.fire(data.msg);
 
             display();
         } catch (error) {
@@ -383,12 +384,12 @@
                     body: JSON.stringify(payload)
                 })
                 const data = await fdata.json();
-                alert(data.msg);
+                Swal.fire(data.msg);
                 document.querySelector("#addProduct").style.display = "none";
                 document.querySelector("#products").classList.remove("active");
                 display();
             } catch (error) {
-                alert(error);
+                Swal.fire(error);
             }
         })
     }

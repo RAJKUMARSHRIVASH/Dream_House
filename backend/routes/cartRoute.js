@@ -1,4 +1,4 @@
-const express = require("express")
+const express = require("express");
 const cartRouter = express.Router();
 const { CartModel } = require("../model/CartModel");
 const { adminAuthenticate } = require("../middleware/adminAuthentication");
@@ -52,16 +52,42 @@ cartRouter.post("/add",authenticate, async (req, res) => {
 })
 
 
-// cartRouter.delete("/delete/:id", async (req, res) => {
-//     const id = req.params.id;
-//     try {
-//         await ProductModel.findByIdAndDelete({ _id: id });
-//         res.json({ "msg": "Product Deleted" });
-//     } catch (error) {
-//         res.json({ "msg": error });
-//         console.log("Something went wrong");
-//     }
-// })
+cartRouter.delete("/delete/:id", async (req, res) => {
+    const id = req.params.id;
+    try {
+        await CartModel.findByIdAndDelete({_id:id})
+        res.json({ "msg": "Product Deleted" });
+    } catch (error) {
+        res.json({ "msg": "Not able to delete" });
+        console.log("Something went wrong",error);
+    }
+})
+
+cartRouter.patch("/qtyplus/:id",async(req,res)=>{
+    const id = req.params.id;
+    try {
+        const data = await CartModel.findOne({_id:id});
+        const qty = data.qty+1;
+        await CartModel.findByIdAndUpdate({_id:id},{qty});
+        res.json({msg:"Updated quantity"});
+    } catch (error) {
+        res.json({ "msg": "Not able to update quantity" });
+        console.log("Something went wrong",error);
+    }
+})
+
+cartRouter.patch("/qtyminus/:id",async(req,res)=>{
+    const id = req.params.id;
+    try {
+        const data = await CartModel.findOne({_id:id});
+        const qty = data.qty-1;
+        await CartModel.findByIdAndUpdate({_id:id},{qty});
+        res.json({msg:"Updated quantity"});
+    } catch (error) {
+        res.json({ "msg": "Not able to update quantity" });
+        console.log("Something went wrong",error);
+    }
+})
 
 
 module.exports = {

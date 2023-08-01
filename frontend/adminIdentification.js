@@ -19,7 +19,7 @@ if (data) {
         document.querySelector("#logout").addEventListener("click", async () => {
             try {
                 localStorage.removeItem("admin");
-                alert("Logged out successfully")
+                Swal.fire("Logged out successfully")
                 window.location.href = "index.html";
             } catch (error) {
                 console.log(error);

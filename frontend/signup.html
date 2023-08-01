@@ -77,6 +77,7 @@
 <script src="./footer.js"></script>
 <script src="./identification.js"></script>
 <script src="./baseUrl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 
@@ -153,9 +154,9 @@
         if (check == true) {
             personData.push(personOBJ);
             localStorage.setItem("personData", JSON.stringify(personData));
-            alert("successfully Account created");
+            Swal.fire("successfully Account created");
         } else {
-            alert("Email Already exists");
+            Swal.fire("Email Already exists");
         }
     }
 
@@ -206,10 +207,10 @@
                 }
                 return result.json()
             }).then(data => {
-                alert(data)
+                Swal.fire(data)
             })
             .catch(err => {
-                alert(err);
+                Swal.fire(err);
             })
     }
 

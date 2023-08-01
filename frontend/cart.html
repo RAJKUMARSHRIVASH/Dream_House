@@ -16,12 +16,10 @@
     <div class="background">
         <h1>Your Cart</h1>
         <section id="middle-cart">
-            <div id="items">
-               
-                
-            </div>
+            <div id="items"></div>
             <div id="total">
-    
+                <h2>Total Price: $<span id="cartTotal">0</span></h2>
+                <button onclick="proceedToPayment()">Proceed to Payment</button>
             </div>
         </section>
     </div>
@@ -58,3 +56,4 @@
         //  ( documentElement  or  scrollingElement )
     }
 </script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

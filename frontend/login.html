@@ -56,6 +56,8 @@
 <script src="./footer.js"></script>
 <script src="./identification.js"></script>
 <script src="./baseUrl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
 
     //*************************************************************************
@@ -87,9 +89,9 @@
     //         }
     //     });
     //     if (check == true) {
-    //         alert("Login Successfull");
+    //         Swal.fire("Login Successfull");
     //     } else {
-    //         alert("Check your id and Password or Please register first");
+    //         Swal.fire("Check your id and Password or Please register first");
     //     }
     // });
 
@@ -120,13 +122,13 @@
             })
             .then(message => {
                 localStorage.setItem("userdata", JSON.stringify({ "token": message.token, "name": message.name }));
-                alert(message.msg);
+                Swal.fire(message.msg);
                 if (message.msg == "Login successful") {
                     history.back()      // to go back into the page from where I have been come from
                 }
             })
             .catch(err => {
-                alert(err)
+                Swal.fire(err)
             })
     });
 

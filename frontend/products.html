@@ -136,6 +136,7 @@
 <script src="./footer.js"></script>
 <script src="./identification.js"></script>
 <script src="./baseUrl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
 
@@ -207,7 +208,7 @@
             });
 
         } catch (error) {
-            alert(error)
+            Swal.fire(error)
         }
     }
     display();
@@ -227,9 +228,9 @@
                 }
             })
             const data = await fdata.json();
-            alert(data.msg);
+            Swal.fire(data.msg);
         } catch (error) {
-            alert(error);
+            Swal.fire(error);
         }
     }
 
@@ -246,9 +247,9 @@
     //                 }
     //             })
     //             const data = await fdata.json();
-    //             alert(data.msg);
+    //             Swal.fire(data.msg);
     //         } catch (error) {
-    //             alert(error);
+    //             Swal.fire(error);
     //         }
     // }
 
