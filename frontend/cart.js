@@ -20,7 +20,7 @@ async function getItem() {
     } else {
         // data = cart data which contains user id and product id
         // item = filtered product data from all the product documents
-        // carArr = combines both  
+        // carArr = combines both
         data.map(async (el, i) => {
             let fetchdata = await fetch(`${baseURL}/products/${el.productID}`);
             let item = await fetchdata.json();
