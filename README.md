@@ -10,6 +10,7 @@ This website is a clone of Crate and Barrel.
 - Responsive
 - Authorization
 - Authentication
+- Cookies
 
 
 ## Tech Stack
@@ -20,6 +21,9 @@ This website is a clone of Crate and Barrel.
 
 **Database:** MongoDB
 
+## External Packages or CDNs
+- Sweetalert2
+- js-cookie
 
 ## Run Locally
 
@@ -91,8 +95,6 @@ To run this project, you will need to add the following environment variables to
 ```http
   GET /cart
 ```
-
-
 
 ## Demo
 ```
