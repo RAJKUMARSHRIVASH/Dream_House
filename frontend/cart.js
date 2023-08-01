@@ -59,8 +59,8 @@ async function displayItem(cartArr) {
                                 <p>Qty</p>
                                 <h4>${el.qty}</h4>
                                 <div class="btns">
-                                    <button style="background-color:rgb(65, 234, 65)" onclick=plus('${el.cartItemId}')>+</button>
-                                    <button style="background-color:rgb(244, 23, 23)" onclick=minus('${el.cartItemId}')>-</button>
+                                    <button style="background-color:rgb(65, 234, 65); cursor:pointer" onclick=plus('${el.cartItemId}')>+</button>
+                                    <button style="background-color:rgb(244, 23, 23); cursor:pointer" onclick=minus('${el.cartItemId}')>-</button>
                                 </div>
                             </div>
                             <div class="remove-item" onclick=deleteItem('${el.cartItemId}')>&#9986;</div>

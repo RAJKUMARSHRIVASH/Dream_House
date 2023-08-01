@@ -61,7 +61,7 @@
     flex-direction: column;
     background-color: white;
     border-radius: 10px;
-    position: fixed;
+    position: sticky;
     right: 2vw;
     top: 42vh;
 
@@ -86,4 +86,5 @@
 
 #total button:hover {
     background-color: rgb(9, 166, 114);
-}
+    cursor: pointer;
+}   
